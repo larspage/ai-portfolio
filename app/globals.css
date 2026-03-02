@@ -2,26 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground: #3a2c1a;
+  --navy-primary: #1e3a5f;
+  --navy-light: #486581;
+  --navy-dark: #102a43;
+  --umber-primary: #8B4513;
+  --umber-light: #A0522D;
+  --umber-dark: #5C3A21;
+  --umber-accent: #CD853F;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+@layer components {
+  .nav-link {
+    @apply px-4 py-2 text-slate-600 hover:text-navy-900 transition-colors duration-200 font-medium;
+  }
+
+  .nav-link-active {
+    @apply text-navy-900 border-b-2 border-navy-900;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-umber-600 to-umber-800 text-white px-6 py-3 rounded-lg font-medium
+           hover:from-umber-700 hover:to-umber-900 hover:shadow-lg transform hover:scale-105
+           transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-umber-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-umber-700 px-6 py-3 rounded-lg font-medium
+           border-2 border-umber-700 hover:bg-umber-50 hover:shadow-md transform hover:scale-105
+           transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-umber-500 focus:ring-offset-2;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-lg border border-umber-200/50 p-5
+           hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-umber-900 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-umber-600 mb-6;
+  }
+
+  .nav-link {
+    @apply px-4 py-2 text-umber-600 hover:text-umber-900 transition-colors duration-200 font-medium;
+  }
+
+  .nav-link-active {
+    @apply text-umber-900 border-b-2 border-umber-900;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
