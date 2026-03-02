@@ -16,7 +16,7 @@ export default function SummaryCard({
   return (
     <div className="card animate-fade-in">
       <h3 className="text-xl font-semibold text-umber-900 mb-3">{title}</h3>
-      <p className="text-slate-600 mb-4">{description}</p>
+      <p className="text-sm text-slate-600 mb-4">{description}</p>
 
       {technologies && technologies.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-4">

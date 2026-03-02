@@ -18,8 +18,8 @@ Return your response as JSON with the following structure:
   "highlights": [
     {
       "title": "Achievement title",
-      "description": "Detailed description of the leadership accomplishment",
-      "impact": "Quantifiable impact or result"
+      "description": "Detailed description of the leadership accomplishment, including specific actions taken, challenges overcome, and the broader context of the achievement",
+      "impact": "Quantifiable impact or result, including metrics, business outcomes, or team improvements"
     }
   ]
 }`,
@@ -33,9 +33,9 @@ Return your response as JSON with the following structure:
   "highlights": [
     {
       "title": "Project or initiative name",
-      "description": "Description of the architectural work",
+      "description": "Description of the architectural work, including the problem being solved, the design approach taken, and the technical challenges addressed",
       "technologies": ["tech1", "tech2"],
-      "impact": "Technical or business impact"
+      "impact": "Technical or business impact, including scalability improvements, performance gains, cost savings, or system reliability enhancements"
     }
   ]
 }`,
@@ -49,9 +49,9 @@ Return your response as JSON with the following structure:
   "highlights": [
     {
       "title": "Project name",
-      "description": "Description of the development work",
+      "description": "Description of the development work, including the technical challenges faced, the solution implemented, and the context of the project",
       "technologies": ["tech1", "tech2"],
-      "metrics": "Performance metrics or achievements"
+      "metrics": "Performance metrics or achievements, including quantitative results, efficiency improvements, or user impact"
     }
   ]
 }`,
