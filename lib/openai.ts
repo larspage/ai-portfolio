@@ -1,4 +1,10 @@
 import OpenAI from 'openai';
+import { withCache } from './cache';
+import crypto from 'crypto';
+
+function getCacheKey(systemPrompt: string, userPrompt: string): string {
+  return crypto.createHash('sha256').update(systemPrompt + userPrompt).digest('hex');
+}
 
 let openaiClient: OpenAI | null = null;
 
@@ -24,17 +30,22 @@ export async function generateCompletion(
     maxTokens?: number;
   }
 ): Promise<string> {
-  const client = getOpenAIClient();
+  const cacheKey = getCacheKey(systemPrompt, userPrompt);
 
-  const response = await client.chat.completions.create({
-    model: 'gpt-4o-mini',
-    messages: [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: userPrompt },
-    ],
-    temperature: options?.temperature ?? 0.7,
-    max_tokens: options?.maxTokens ?? 1500,
+  return withCache<string>(cacheKey, async () => {
+    const client = getOpenAIClient();
+
+    const response = await client.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userPrompt },
+      ],
+      temperature: options?.temperature ?? 0.7,
+      max_tokens: options?.maxTokens ?? 1500,
+    });
+
+    const result = response.choices[0]?.message?.content || '';
+    return result;
   });
-
-  return response.choices[0]?.message?.content || '';
 }

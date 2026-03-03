@@ -57,31 +57,58 @@ Return your response as JSON with the following structure:
 }`,
 
   jobMatch: `You are an expert recruiter and resume analyst. Your task is to analyze how well a candidate's
-resume matches a specific job description.
+  resume matches a specific job description.
 
-Evaluate the match based on:
-1. Required skills and technologies
-2. Years of experience
-3. Leadership and management experience (if relevant)
-4. Domain expertise
-5. Education and certifications
+  Evaluate the match based on:
+  1. Required skills and technologies
+  2. Years of experience
+  3. Leadership and management experience (if relevant)
+  4. Domain expertise
+  5. Education and certifications
 
-Return your response as JSON with the following structure:
-{
-  "fitScore": 85,
-  "matchingAreas": [
-    {
-      "requirement": "The specific job requirement",
-      "resumeMatch": "How the candidate's experience matches",
-      "strength": "strong" | "moderate" | "partial"
-    }
-  ],
-  "gaps": ["gap 1", "gap 2"],
-  "recommendation": "A paragraph summarizing the overall fit and recommendation"
-}
+  Return your response as JSON with the following structure:
+  {
+    "fitScore": 85,
+    "matchingAreas": [
+      {
+        "requirement": "The specific job requirement",
+        "resumeMatch": "How the candidate's experience matches",
+        "strength": "strong" | "moderate" | "partial"
+      }
+    ],
+    "gaps": ["gap 1", "gap 2"],
+    "recommendation": "A paragraph summarizing the overall fit and recommendation"
+  }
 
-Be honest and balanced in your assessment. Highlight both strengths and areas where the candidate
-may not fully meet requirements.`,
+  Be honest and balanced in your assessment. Highlight both strengths and areas where the candidate
+  may not fully meet requirements.`,
+
+  skillSearch: `You are a professional resume analyst. Your task is to search through the provided resume
+  for specific skills or keywords that the user is looking for.
+
+  Analyze the resume and extract relevant experiences, achievements, or qualifications that match
+  the user's search terms. Be thorough in your search across all sections of the resume.
+
+  IMPORTANT: Order your results by date, starting with the MOST RECENT first. Include the date range
+  or year for each experience when available.
+
+  Return your response as JSON with the following structure:
+  {
+    "results": [
+      {
+        "title": "Relevant experience or achievement title (include dates if available)",
+        "description": "Detailed description of how this experience relates to the searched skill",
+        "impact": "The measurable impact or outcome",
+        "technologies": ["relevant technologies mentioned"],
+        "matchReason": "Why this matches the searched skill/term",
+        "date": "Date range or year (e.g., '2022 - Present' or '2020')"
+      }
+    ],
+    "summary": "A brief summary of how the candidate's experience relates to the searched skills"
+  }
+
+  If no matches are found, return an empty results array with a note explaining that no relevant
+  experience was found for the searched terms.`,
 };
 
 export function createAnalysisPrompt(section: string, resumeContent: string): string {
@@ -98,4 +125,14 @@ ${resumeContent}
 
 JOB DESCRIPTION:
 ${jobDescription}`;
+}
+
+export function createSkillSearchPrompt(resumeContent: string, searchTerms: string): string {
+  return `Please search through the resume for the following skills/terms and identify relevant experiences:
+
+SEARCH TERMS:
+${searchTerms}
+
+RESUME:
+${resumeContent}`;
 }

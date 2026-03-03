@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import { withCache } from './cache';
 
 export interface ResumeMetadata {
   name: string;
@@ -35,22 +36,24 @@ export function getResumeRaw(): string {
 }
 
 export async function parseResume(): Promise<ParsedResume> {
-  const fileContents = getResumeRaw();
-  const { data, content } = matter(fileContents);
+  return withCache<ParsedResume>('parsedResume', async () => {
+    const fileContents = getResumeRaw();
+    const { data, content } = matter(fileContents);
 
-  const processedContent = await remark()
-    .use(html)
-    .process(content);
-  const htmlContent = processedContent.toString();
+    const processedContent = await remark()
+      .use(html)
+      .process(content);
+    const htmlContent = processedContent.toString();
 
-  const sections = extractSections(content);
+    const sections = extractSections(content);
 
-  return {
-    metadata: data as ResumeMetadata,
-    content,
-    htmlContent,
-    sections,
-  };
+    return {
+      metadata: data as ResumeMetadata,
+      content,
+      htmlContent,
+      sections,
+    };
+  });
 }
 
 function extractSections(content: string): ParsedResume['sections'] {
@@ -102,5 +105,8 @@ function extractSections(content: string): ParsedResume['sections'] {
 }
 
 export function getResumeSection(sectionName: keyof ParsedResume['sections']): Promise<string> {
-  return parseResume().then(resume => resume.sections[sectionName]);
+  return withCache<string>('section_' + sectionName, async () => {
+    const resume = await parseResume();
+    return resume.sections[sectionName];
+  });
 }

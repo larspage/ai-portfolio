@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import SkillSearchForm from '@/components/SkillSearchForm';
 
 interface OverviewData {
   summary: string;
@@ -180,6 +181,11 @@ export default function HomePage() {
             </div>
           </Link>
         </div>
+      </section>
+
+      {/* Skills Search Section */}
+      <section className="animate-slide-up">
+        <SkillSearchForm />
       </section>
 
       {/* CTA for Recruiters */}

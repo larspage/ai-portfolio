@@ -2,10 +2,20 @@
 
 ## Current Sprint (High Priority)
 
+### [x] Caching Implementation
+- [x] Add caching for frequently accessed resume data
+- [x] Implement persistent file-based caching (.cache directory)
+- [x] Add automatic cache invalidation on content file changes
+
+### [x] Skills Search Feature
+- [x] Add skills search form to home page
+- [x] Create skills search API endpoint
+- [x] Display results using SummaryCard components
+- [x] Order results by date (newest first)
+
 ### [ ] API Enhancements
 - [ ] Add error handling for OpenAI API failures
 - [ ] Implement rate limiting for API endpoints
-- [ ] Add caching for frequently accessed resume data
 
 ### [ ] User Experience Improvements
 - [ ] Add loading states for all API calls
@@ -69,4 +79,4 @@
 - [ ] None currently identified
 
 ---
-*Last updated: 2026-03-02*
+*Last updated: 2026-03-03*
