@@ -21,5 +21,6 @@ jobs:
             npm install --omit=dev
             npm run build
             pm2 stop aiportfolio
+            fuser -k 3000/tcp || true
             pm2 start aiportfolio
             pm2 save
