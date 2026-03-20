@@ -32,10 +32,6 @@ function getContentFilesHash(): string {
   return crypto.createHash('sha256').update(fileHashes.join('')).digest('hex');
 }
 
-function getCacheKey(...args: string[]): string {
-  return crypto.createHash('sha256').update(args.join('')).digest('hex');
-}
-
 function getCacheFilePath(cacheKey: string): string {
   ensureCacheDirectory();
   return path.join(CACHE_DIR, `${cacheKey}.json`);

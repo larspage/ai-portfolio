@@ -1,8 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import SummaryCard from '@/components/SummaryCard';
 import LoadingSpinner from '@/components/LoadingSpinner';
+
+// Skills from resume Technical Skills section (client-safe)
+const RESUME_SKILLS = [
+  'C#.NET', '.NET Core', 'SQL', 'VB.NET', 'JavaScript', 'Oracle',
+  'Agile', 'Scrum', 'Kanban', 'SOLID', 'Clean Architecture', 'DevOps',
+  'MS SQL Server', 'Blazor', 'MVC', 'ASP.NET', 'REST', 'Web API',
+  'Web Services', 'LINQ', 'ADO.NET', 'HTML', 'XML', 'CSS', 'jQuery',
+  'Bootstrap', 'React', 'Visual Studio', 'SSMS', 'SSIS', 'Azure DevOps',
+  'Git', 'TFS', 'Jira', 'Tortoise SVN', 'Generative AI'
+];
 
 interface SkillSearchResult {
   title: string;
@@ -24,6 +34,18 @@ export default function SkillSearchForm() {
   const [isSearching, setIsSearching] = useState(false);
   const [results, setResults] = useState<SkillSearchResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // Get skills from resume - filtered to only show relevant skills
+  const resumeSkills = useMemo(() => {
+    return RESUME_SKILLS.filter(skill => {
+      // Exclude AWS (not in resume)
+      if (skill.toLowerCase().includes('aws')) return false;
+      // Only include Generative AI from Mr Brooks section, exclude Claude.AI and Cursor
+      if (skill.toLowerCase().includes('claude')) return false;
+      if (skill.toLowerCase() === 'cursor') return false;
+      return true;
+    });
+  }, []);
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,7 +87,7 @@ export default function SkillSearchForm() {
           Search for Specific Skills
         </h2>
         <p className="text-slate-600 mb-4">
-          Enter skills or keywords you're looking for, and we'll find relevant 
+          Enter skills or keywords you&apos;re looking for, and we&apos;ll find relevant 
           experiences from the resume.
         </p>
         
@@ -79,7 +101,7 @@ export default function SkillSearchForm() {
               id="searchTerms"
               value={searchTerms}
               onChange={(e) => setSearchTerms(e.target.value)}
-              placeholder="e.g., React, Python, Agile, leadership, AWS..."
+              placeholder={'e.g., ' + resumeSkills.slice(0, 5).join(', ') + '...'}
               className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 
                          focus:ring-umber-500 focus:border-umber-500 outline-none transition-all"
               disabled={isSearching}
@@ -169,7 +191,7 @@ export default function SkillSearchForm() {
           ) : (
             <div className="card text-center py-8">
               <p className="text-slate-600">
-                No specific experiences found for "{results.searchTerms}". 
+                No specific experiences found for &quot;{results.searchTerms}&quot;. 
                 Try different keywords or more general terms.
               </p>
             </div>

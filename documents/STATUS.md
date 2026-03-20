@@ -1,6 +1,6 @@
 # Project Status Log
 
-## 2026-03-03 - Skills Search Feature & Caching
+## 2026-03-04 - DigitalOcean Deployment Inquiry
 
 ### Completed
 - [x] Project structure analysis
@@ -10,12 +10,13 @@
 - [x] Documented current API endpoints
 - [x] Implemented persistent file-based caching for AI analysis
 - [x] Added skills search feature to home page
+- [x] Updated skills search to show only resume skills (excluding AWS, Claude.AI, Cursor)
 
 ### Current Status
 - **Project Type**: Next.js portfolio with AI features
 - **Completion**: ~90% (core functionality complete)
 - **Active Development**: Yes
-- **Next Steps**: API enhancements and UX improvements
+- **Deployment**: Considering DigitalOcean
 
 ### Key Metrics
 - **Files**: 40+ source files
@@ -29,12 +30,19 @@
 - Added SkillSearchForm component
 - Skills search results now include dates, sorted newest first
 - Added skills search section to home page
+- Updated skills search to only suggest resume skills (no AWS, no Claude.AI, no Cursor - only Generative AI from Mr Brooks)
+
+### DigitalOcean Deployment (Pending)
+- User wants to deploy to DigitalOcean
+- GitHub has keys to push to DigitalOcean
+- Next steps: Choose between App Platform (PaaS) or Droplet (VPS)
 
 ### Upcoming Tasks
-1. Implement enhanced error handling for OpenAI API
-2. Add loading states for all API calls
-3. Create content migration script
-4. Add form validation for job matching
+1. Implement DigitalOcean deployment
+2. Implement enhanced error handling for OpenAI API
+3. Add loading states for all API calls
+4. Create content migration script
+5. Add form validation for job matching
 
 ---
-*Last updated: 2026-03-03*
+*Last updated: 2026-03-04*

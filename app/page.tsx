@@ -23,6 +23,7 @@ export default function HomePage() {
   const [metadata, setMetadata] = useState<ResumeMetadata | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isSkillsExpanded, setIsSkillsExpanded] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -141,6 +142,31 @@ export default function HomePage() {
         </section>
       )}
 
+      {/* Skills Search Section */}
+      <section className="animate-slide-up">
+        <button
+          onClick={() => setIsSkillsExpanded(!isSkillsExpanded)}
+          className="w-full card text-left flex items-center justify-between hover:shadow-lg transition-shadow cursor-pointer"
+        >
+          <span className="text-xl font-semibold text-umber-900">
+            {isSkillsExpanded ? 'Search for Specific Skills' : 'Do I have what you need? Click to find out'}
+          </span>
+          <svg
+            className={`w-6 h-6 text-umber-600 flex-shrink-0 transition-transform duration-200 ${isSkillsExpanded ? 'rotate-180' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        {isSkillsExpanded && (
+          <div className="mt-4">
+            <SkillSearchForm />
+          </div>
+        )}
+      </section>
+
       {/* Quick Links */}
       <section className="animate-slide-up">
         <h2 className="section-title text-center">Explore My Experience</h2>
@@ -181,11 +207,6 @@ export default function HomePage() {
             </div>
           </Link>
         </div>
-      </section>
-
-      {/* Skills Search Section */}
-      <section className="animate-slide-up">
-        <SkillSearchForm />
       </section>
 
       {/* CTA for Recruiters */}
