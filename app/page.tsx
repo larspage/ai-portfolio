@@ -149,7 +149,7 @@ export default function HomePage() {
           className="w-full card text-left flex items-center justify-between hover:shadow-lg transition-shadow cursor-pointer"
         >
           <span className="text-xl font-semibold text-umber-900">
-            {isSkillsExpanded ? 'Search for Specific Skills' : 'Do I have what you need? Click to find out'}
+            Do I have what you need? Click to find out
           </span>
           <svg
             className={`w-6 h-6 text-umber-600 flex-shrink-0 transition-transform duration-200 ${isSkillsExpanded ? 'rotate-180' : ''}`}
@@ -161,7 +161,7 @@ export default function HomePage() {
           </svg>
         </button>
         {isSkillsExpanded && (
-          <div className="mt-4">
+          <div className="mt-0">
             <SkillSearchForm />
           </div>
         )}

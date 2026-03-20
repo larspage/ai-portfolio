@@ -83,9 +83,6 @@ export default function SkillSearchForm() {
   return (
     <div className="space-y-6">
       <div className="card">
-        <h2 className="text-xl font-semibold text-umber-900 mb-4">
-          Search for Specific Skills
-        </h2>
         <p className="text-slate-600 mb-4">
           Enter skills or keywords you&apos;re looking for, and we&apos;ll find relevant 
           experiences from the resume.
