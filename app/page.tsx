@@ -143,10 +143,10 @@ export default function HomePage() {
       )}
 
       {/* Skills Search Section */}
-      <section className="animate-slide-up">
+      <section className="card animate-slide-up">
         <button
           onClick={() => setIsSkillsExpanded(!isSkillsExpanded)}
-          className="w-full card text-left flex items-center justify-between hover:shadow-lg transition-shadow cursor-pointer"
+          className="w-full text-left flex items-center justify-between"
         >
           <span className="text-xl font-semibold text-umber-900">
             Do I have what you need? Click to find out
@@ -161,7 +161,7 @@ export default function HomePage() {
           </svg>
         </button>
         {isSkillsExpanded && (
-          <div className="mt-0">
+          <div className="mt-4">
             <SkillSearchForm />
           </div>
         )}
