@@ -1,0 +1,964 @@
+{
+  "notes": "Generated via manual Zoe interview session 2026-03-23. Pending: add Thomson Group dates; add KPMG hands-on development bullet for Institutes Platform.",
+  "bullets": [
+    {
+      "company": "KPMG (Consultant to FTE)",
+      "role": "Senior Application Architect & Technical Manager",
+      "dates": "August 2006 – September 2009",
+      "tenure_years": 3.1,
+      "bullet": "Grew development team from 2 to 11 developers plus several QAs including interviewing, hiring, reviewing and occasionally terminating non-performing team members to build a highly performing team",
+      "skills": [
+        "Team Leadership",
+        "Hiring",
+        "Performance Management",
+        "Team Building"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "KPMG (Consultant to FTE)",
+      "role": "Senior Application Architect & Technical Manager",
+      "dates": "August 2006 – September 2009",
+      "tenure_years": 3.1,
+      "bullet": "Formed and nurtured a talented, high-performing, cross-functional team, fostering a collaborative environment and promoting knowledge sharing",
+      "skills": [
+        "Team Leadership",
+        "Cross-functional Collaboration",
+        "Mentor"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "KPMG (Consultant to FTE)",
+      "role": "Senior Application Architect & Technical Manager",
+      "dates": "August 2006 – September 2009",
+      "tenure_years": 3.1,
+      "bullet": "Led a multi-year, $4+ million development and maintenance project, successfully delivering the Institutes Platform and other critical applications",
+      "skills": [
+        "Project Management",
+        "Budget Management",
+        "Enterprise Application Delivery",
+        ".NET",
+        "SQL Server",
+        "Web Development"
+      ],
+      "category": [
+        "management"
+      ],
+      "extended_description": "Also personally developed the Institutes Platform — hands-on development bullet to be added."
+    },
+    {
+      "company": "KPMG (Consultant to FTE)",
+      "role": "Senior Application Architect & Technical Manager",
+      "dates": "August 2006 – September 2009",
+      "tenure_years": 3.1,
+      "bullet": "Championed Agile methodologies by conducting Scrum meetings and fostering a collaborative development environment",
+      "skills": [
+        "Agile",
+        "Scrum",
+        "Team Leadership"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "UPS (Consultant for Avanade)",
+      "role": "Software Development Manager",
+      "dates": "March 2010 – September 2011",
+      "tenure_years": 1.5,
+      "bullet": "Spearheaded a global, Agile team of onshore and offshore developers, successfully delivering critical projects on time and within budget",
+      "skills": [
+        "Agile",
+        "Remote Team Management",
+        "Offshore Coordination",
+        "Project Delivery",
+        "Budget Management"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "UPS (Consultant for Avanade)",
+      "role": "Software Development Manager",
+      "dates": "March 2010 – September 2011",
+      "tenure_years": 1.5,
+      "bullet": "Implemented Scrum methodology to organize project delivery and ensure team collaboration",
+      "skills": [
+        "Scrum",
+        "Agile",
+        "Project Delivery",
+        "Cross-functional Collaboration"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "UPS (Consultant for Avanade)",
+      "role": "Software Development Manager",
+      "dates": "March 2010 – September 2011",
+      "tenure_years": 1.5,
+      "bullet": "Collaborated with MQSeries group, Shipping & Operations, and IT Leadership to bridge communication gaps between onshore and offshore teams, facilitate information flow, and ensure alignment on technical design and implementation",
+      "skills": [
+        "Stakeholder Management",
+        "Offshore Coordination",
+        "Business Analysis",
+        "MQSeries"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "UPS (Consultant for Avanade)",
+      "role": "Software Development Manager",
+      "dates": "March 2010 – September 2011",
+      "tenure_years": 1.5,
+      "bullet": "Defined and enforced development standards specific to the project and environment, promoting stability and consistent code quality",
+      "skills": [
+        "Development Standards",
+        "Code Quality",
+        "Technical Leadership"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "UPS (Consultant for Avanade)",
+      "role": "Software Development Manager",
+      "dates": "March 2010 – September 2011",
+      "tenure_years": 1.5,
+      "bullet": "Championed team members by advocating for recognition and fostering a cohesive team spirit across diverse locations",
+      "skills": [
+        "Team Leadership",
+        "Remote Team Management",
+        "Mentor",
+        "Performance Management"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "NRG (formerly Direct Energy)",
+      "role": "Development Manager - Billing",
+      "dates": "March 2013 – January 2022",
+      "tenure_years": 8.8,
+      "bullet": "Leading, mentoring, and building 3 dynamic Agile Scrum software development teams, comprising 10 developers and 3 QAs, to deliver critical enhancements to our in-house Discovery billing and CIS/CRM application, supporting millions of customers across 15 states and exchanging data with 100s of utilities",
+      "skills": [
+        "Team Leadership",
+        "Agile",
+        "Scrum",
+        "Mentor",
+        "C#",
+        "SQL Server",
+        "CRM",
+        "Billing Systems",
+        "CIS",
+        "EDI",
+        "Cross-functional Management"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "NRG (formerly Direct Energy)",
+      "role": "Development Manager - Billing",
+      "dates": "March 2013 – January 2022",
+      "tenure_years": 8.8,
+      "bullet": "Aligned with stakeholders from various parts of the company to prioritize and reduce backlog by 100s of items, working with cross-functional teams optimizing solutions, and ensure their timely implementation for Back Office and B2B divisions, resulting in improved efficiency and increased stability as well as increased user and customer satisfaction",
+      "skills": [
+        "Stakeholder Management",
+        "Backlog Management",
+        "Cross-functional Collaboration",
+        "Agile",
+        "B2B",
+        "Kanban",
+        "Scrum",
+        "System Performance",
+        "Operational Efficiency"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "NRG (formerly Direct Energy)",
+      "role": "Development Manager - Billing",
+      "dates": "March 2013 – January 2022",
+      "tenure_years": 8.8,
+      "bullet": "Interviewed, evaluated, and recommended new hires in order to build teams for various projects",
+      "skills": [
+        "Hiring",
+        "Team Building"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "NRG (formerly Direct Energy)",
+      "role": "Development Manager - Billing",
+      "dates": "March 2013 – January 2022",
+      "tenure_years": 8.8,
+      "bullet": "Enhanced team productivity and quality by evaluating tools, processes, and procedures, and identifying opportunities for optimization, contributing to increased team morale and reduced project timelines",
+      "skills": [
+        "Tool Evaluation",
+        "Productivity",
+        "Quality Assurance",
+        "Team Building",
+        "Operational Efficiency"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "NRG (formerly Direct Energy)",
+      "role": "Development Manager - Billing",
+      "dates": "March 2013 – January 2022",
+      "tenure_years": 8.8,
+      "bullet": "Empowered team members by providing guidance, mentorship, and career development opportunities, fostering a high-performing and engaged team",
+      "skills": [
+        "Mentor",
+        "Career Development",
+        "Team Leadership"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "Spruce Technologies",
+      "role": "Senior Director – Technical Services",
+      "dates": "January 2022 – September 2024",
+      "tenure_years": 2.7,
+      "bullet": "Managed 12 people on 2 cross-functional software engineering teams for 2 clients, including hiring, training, aligning group and individual goals with strategic goals, and performance management for 2 NYC Departments",
+      "skills": [
+        "Team Leadership",
+        "Hiring",
+        "Training",
+        "Performance Management",
+        "Cross-functional Management",
+        "Client Management",
+        "Strategic Planning"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "Spruce Technologies",
+      "role": "Senior Director – Technical Services",
+      "dates": "January 2022 – September 2024",
+      "tenure_years": 2.7,
+      "bullet": "Architected and implemented .NET Core solutions for NYC Department of Health and Mental Hygiene — eliminated manual data entry using SSIS jobs for ETL and data acquisition from online data sources",
+      "skills": [
+        ".NET Core",
+        "C#",
+        "SSIS",
+        "ETL",
+        "Data Integration",
+        "Architecture",
+        "SQL Server",
+        "Development"
+      ],
+      "category": [
+        "architecture",
+        "development"
+      ]
+    },
+    {
+      "company": "Spruce Technologies",
+      "role": "Senior Director – Technical Services",
+      "dates": "January 2022 – September 2024",
+      "tenure_years": 2.7,
+      "bullet": "Built .NET Core application for NYC Department of Education to replace part of Mainframe functionality — modernized application, streamlined operations, enhanced data integrity and security, integrated with 6 different school information systems for private and public schools in NYC",
+      "skills": [
+        ".NET Core",
+        "C#",
+        "Mainframe Migration",
+        "Data Integrity",
+        "Security",
+        "Systems Integration",
+        "Architecture",
+        "Development",
+        "Modernization",
+        "Operational Efficiency"
+      ],
+      "category": [
+        "architecture",
+        "development"
+      ]
+    },
+    {
+      "company": "Spruce Technologies",
+      "role": "Senior Director – Technical Services",
+      "dates": "January 2022 – September 2024",
+      "tenure_years": 2.7,
+      "bullet": "Forged newly formed technology-specific competency groups into 4 Centers of Excellence with shared code libraries, Teams on Microsoft Teams, and resource centers with articles and videos",
+      "skills": [
+        "Team Leadership",
+        "Knowledge Management",
+        "Microsoft Teams",
+        "Code Reusability",
+        "Organizational Improvement"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "Spruce Technologies",
+      "role": "Senior Director – Technical Services",
+      "dates": "January 2022 – September 2024",
+      "tenure_years": 2.7,
+      "bullet": "Collaborated with senior stakeholders to define application strategy and deliver enterprise .NET Core solutions that modernized critical systems, improved security, and increased operational efficiency, delivered through CICD and Azure DevOps",
+      "skills": [
+        "Stakeholder Management",
+        "Strategic Planning",
+        ".NET Core",
+        "Azure DevOps",
+        "CI/CD",
+        "Security",
+        "Modernization",
+        "Architecture"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "Spruce Technologies",
+      "role": "Senior Director – Technical Services",
+      "dates": "January 2022 – September 2024",
+      "tenure_years": 2.7,
+      "bullet": "Successfully completed projects 10% under budget, through exceptional resource and financial management",
+      "skills": [
+        "Budget Management",
+        "Resource Management",
+        "Project Delivery"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "KPMG (Consultant to FTE)",
+      "role": "Senior Application Architect & Technical Manager",
+      "dates": "August 2006 – September 2009",
+      "tenure_years": 3.1,
+      "project": "Institutes Platform",
+      "bullet": "Architected and delivered Institutes Platform, a multi-tenant platform for marketing websites, reducing development costs by 80% and deployment speed by 90%",
+      "skills": [
+        "Architecture",
+        ".NET",
+        "Multi-tenant Architecture",
+        "Web Development",
+        "Cost Reduction",
+        "Development",
+        "System Performance",
+        "Operational Efficiency"
+      ],
+      "category": [
+        "architecture",
+        "development"
+      ]
+    },
+    {
+      "company": "KPMG (Consultant to FTE)",
+      "role": "Senior Application Architect & Technical Manager",
+      "dates": "August 2006 – September 2009",
+      "tenure_years": 3.1,
+      "project": "Institutes Platform",
+      "bullet": "Created a reusable code library to reduce development efforts",
+      "skills": [
+        "Architecture",
+        ".NET",
+        "Code Reusability",
+        "Development",
+        "System Performance"
+      ],
+      "category": [
+        "architecture",
+        "development"
+      ]
+    },
+    {
+      "company": "KPMG (Consultant to FTE)",
+      "role": "Senior Application Architect & Technical Manager",
+      "dates": "August 2006 – September 2009",
+      "tenure_years": 3.1,
+      "project": "Institutes Platform",
+      "bullet": "Designed and implemented departmental standards for consistent code practices",
+      "skills": [
+        "Architecture",
+        "Development Standards",
+        "Code Quality",
+        "Technical Leadership"
+      ],
+      "category": [
+        "architecture"
+      ]
+    },
+    {
+      "company": "Spruce Technologies",
+      "role": "Senior Director – Technical Services",
+      "dates": "January 2022 – September 2024",
+      "tenure_years": 2.7,
+      "project": "Enterprise .NET Core Solutions",
+      "bullet": "Designed ETL pipelines using SSIS jobs for data acquisition and integration",
+      "skills": [
+        "SSIS",
+        "ETL",
+        "Data Integration",
+        ".NET Core",
+        "Architecture"
+      ],
+      "category": [
+        "architecture"
+      ]
+    },
+    {
+      "company": "Spruce Technologies",
+      "role": "Senior Director – Technical Services",
+      "dates": "January 2022 – September 2024",
+      "tenure_years": 2.7,
+      "project": "Enterprise .NET Core Solutions",
+      "bullet": "Implemented CICD pipelines through Azure DevOps for continuous delivery",
+      "skills": [
+        "CI/CD",
+        "Azure DevOps",
+        "DevOps",
+        "Architecture"
+      ],
+      "category": [
+        "architecture"
+      ]
+    },
+    {
+      "company": "NRG (formerly Direct Energy)",
+      "role": "Development Manager - Billing",
+      "dates": "March 2013 – January 2022",
+      "tenure_years": 8.8,
+      "project": "Billing System Architecture",
+      "bullet": "Architected and developed a scalable enrollment website using CSS, HTML, MVC, jQuery, JavaScript, and Bootstrap",
+      "skills": [
+        "Architecture",
+        "Web Development",
+        ".NET MVC",
+        "CSS",
+        "HTML",
+        "jQuery",
+        "JavaScript",
+        "Bootstrap",
+        "Development"
+      ],
+      "category": [
+        "architecture",
+        "development"
+      ]
+    },
+    {
+      "company": "NRG (formerly Direct Energy)",
+      "role": "Development Manager - Billing",
+      "dates": "March 2013 – January 2022",
+      "tenure_years": 8.8,
+      "project": "Billing System Architecture",
+      "bullet": "Modernized development practices by implementing TFS and NuGet, transitioning to a NuGet-centric architecture",
+      "skills": [
+        "DevOps",
+        "TFS",
+        "NuGet",
+        ".NET",
+        "Architecture",
+        "Modernization",
+        "Tool Evaluation",
+        "Technology Adoption"
+      ],
+      "category": [
+        "architecture"
+      ]
+    },
+    {
+      "company": "NRG (formerly Direct Energy)",
+      "role": "Development Manager - Billing",
+      "dates": "March 2013 – January 2022",
+      "tenure_years": 8.8,
+      "project": "Billing System Architecture",
+      "bullet": "Decreased initial build times from hours to minutes by eliminating manual effort to find and install properly versioned DLLs",
+      "skills": [
+        "DevOps",
+        "NuGet",
+        ".NET",
+        "Operational Efficiency"
+      ],
+      "category": [
+        "architecture"
+      ]
+    },
+    {
+      "company": "Thomson Group",
+      "role": "Consultant – Software Development Team Lead",
+      "dates": "December 2005 – August 2006",
+      "tenure_years": 0.8,
+      "project": "SaaS Platform",
+      "bullet": "Developed a SaaS product using a 3-tier architecture (AJAX, SQL Server 2000, XML, VB.NET 2.0, ASP.NET 2.0)",
+      "skills": [
+        "SaaS",
+        "Architecture",
+        "3-Tier Architecture",
+        "AJAX",
+        "SQL Server",
+        "XML",
+        "VB.NET",
+        "ASP.NET",
+        "Development"
+      ],
+      "category": [
+        "architecture",
+        "development"
+      ]
+    },
+    {
+      "company": "Thomson Group",
+      "role": "Consultant – Software Development Team Lead",
+      "dates": "December 2005 – August 2006",
+      "tenure_years": 0.8,
+      "project": "SaaS Platform",
+      "bullet": "Designed configuration-driven fields and data types to provide flexibility and adaptability for each client independently",
+      "skills": [
+        "Architecture",
+        "SaaS",
+        "Configuration Management",
+        "Multi-tenant Architecture",
+        "Development"
+      ],
+      "category": [
+        "architecture",
+        "development"
+      ]
+    },
+    {
+      "company": "Thomson Group",
+      "role": "Consultant – Software Development Team Lead",
+      "dates": "December 2005 – August 2006",
+      "tenure_years": 0.8,
+      "project": "SaaS Platform",
+      "bullet": "Created and optimized complex stored procedures exceeding 2,000 lines for dynamic data access and manipulation",
+      "skills": [
+        "SQL Server",
+        "Stored Procedures",
+        "Database Design",
+        "Development"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Mr Brooks Products and Services",
+      "role": "AI-Powered Website Development",
+      "dates": "January 2025 – Present",
+      "tenure_years": 1.2,
+      "bullet": "Developed SaaS websites using generative Artificial Intelligence with Claude.AI and Cursor",
+      "skills": [
+        "Generative AI",
+        "Claude.AI",
+        "Cursor",
+        "SaaS",
+        "Web Development",
+        "Development"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Mr Brooks Products and Services",
+      "role": "AI-Powered Website Development",
+      "dates": "January 2025 – Present",
+      "tenure_years": 1.2,
+      "bullet": "Leveraged PostgreSQL, React, and other technologies to quickly develop professional caliber websites",
+      "skills": [
+        "PostgreSQL",
+        "React",
+        "Web Development",
+        "Development"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Perry Systems, Inc",
+      "role": "Content Management System Optimization",
+      "dates": "September 2009 – January 2010",
+      "tenure_years": 0.3,
+      "bullet": "Optimized Content Management System (SQL Server 2005, C#, ASP.NET 3.5) to handle 2 million requests per hour",
+      "skills": [
+        "C#",
+        "ASP.NET",
+        "SQL Server",
+        "CMS",
+        "Development",
+        "System Performance"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Perry Systems, Inc",
+      "role": "Content Management System Optimization",
+      "dates": "September 2009 – January 2010",
+      "tenure_years": 0.3,
+      "bullet": "Automated file upload process (Winforms, C# 3.5, SQL Server 2005) for designers, reducing upload time from 8-12 hours to 30 seconds",
+      "skills": [
+        "C#",
+        "WinForms",
+        "SQL Server",
+        "Development",
+        "System Performance"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Presidential Life Insurance Company",
+      "role": "Board of Directors Portal",
+      "dates": "September 2011 – March 2013",
+      "tenure_years": 1.5,
+      "bullet": "Developed Board of Directors site (SQL Server, ASP.NET 4.0, C#, AJAX, Telerik's r.a.d. controls, LINQ) for scheduling meetings, recording minutes, managing documents, and communication",
+      "skills": [
+        "C#",
+        "ASP.NET",
+        "SQL Server",
+        "AJAX",
+        "LINQ",
+        "Telerik",
+        "Web Development",
+        "Development"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Presidential Life Insurance Company",
+      "role": "Board of Directors Portal",
+      "dates": "September 2011 – March 2013",
+      "tenure_years": 1.5,
+      "bullet": "Built data validation site (MVC4, Entity Framework 5, C#, SQL Server 2005) to compare system of record to exported data",
+      "skills": [
+        "C#",
+        ".NET MVC",
+        "Entity Framework",
+        "SQL Server",
+        "Data Validation",
+        "Development"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Presidential Life Insurance Company",
+      "role": "Board of Directors Portal",
+      "dates": "September 2011 – March 2013",
+      "tenure_years": 1.5,
+      "bullet": "Adopted and implemented SharePoint 2007 for project management",
+      "skills": [
+        "SharePoint",
+        "Project Management",
+        "Technology Adoption"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "KPMG (Consultant to FTE)",
+      "role": "Senior Application Architect & Technical Manager",
+      "dates": "August 2006 – September 2009",
+      "tenure_years": 3.1,
+      "project": "PRC Online",
+      "bullet": "Saved over $4 million by developing PRC Online, a proposal tracking website that streamlined proposal development",
+      "skills": [
+        "C#",
+        "ASP.NET",
+        "SQL Server",
+        "Web Development",
+        "Development",
+        "Cost Reduction",
+        "Operational Efficiency"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "KPMG (Consultant to FTE)",
+      "role": "Senior Application Architect & Technical Manager",
+      "dates": "August 2006 – September 2009",
+      "tenure_years": 3.1,
+      "project": "PRC Online",
+      "bullet": "Shared knowledge by launching a \"Lunch and Learn\" initiative for technology adoption",
+      "skills": [
+        "Mentor",
+        "Knowledge Management",
+        "Technology Adoption",
+        "Team Leadership"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "Mr Brooks Products and Services",
+      "role": "AI-Powered Website Development",
+      "dates": "January 2025 – Present",
+      "tenure_years": 1.2,
+      "bullet": "Developed SaaS and other websites using generative Artificial Intelligence with Kilocode and various LLMs, Cursor to create websites leveraging Docker, PostgreSQL, React, Node, MongoDB, and other technologies to quickly develop professional caliber websites",
+      "skills": [
+        "Generative AI",
+        "Cursor",
+        "SaaS",
+        "Web Development",
+        "Docker",
+        "PostgreSQL",
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Development"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Spruce Technologies",
+      "role": "Senior Director – Technical Services",
+      "dates": "January 2022 – September 2024",
+      "tenure_years": 2.7,
+      "bullet": "Architected, designed, and implemented multiple scalable, highly maintainable, C# websites and RESTful APIs for NYC governmental departments using clean code, test driven development (TDD), and SOLID principles",
+      "skills": [
+        "C#",
+        ".NET Core",
+        "REST",
+        "Architecture",
+        "Development",
+        "TDD",
+        "SOLID",
+        "Clean Code",
+        "Web Development"
+      ],
+      "category": [
+        "architecture",
+        "development"
+      ]
+    },
+    {
+      "company": "Spruce Technologies",
+      "role": "Senior Director – Technical Services",
+      "dates": "January 2022 – September 2024",
+      "tenure_years": 2.7,
+      "bullet": "Developed and maintained critical systems, such as the Master Student Index website, streamlining operations, enhancing data integrity, and prioritizing security best practices",
+      "skills": [
+        "C#",
+        ".NET Core",
+        "Development",
+        "Data Integrity",
+        "Security",
+        "Operational Efficiency"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Spruce Technologies",
+      "role": "Senior Director – Technical Services",
+      "dates": "January 2022 – September 2024",
+      "tenure_years": 2.7,
+      "bullet": "Secure applications were developed with a strong focus on security, addressing all penetration testing issues and ensuring compliance with industry standards",
+      "skills": [
+        "Security",
+        "C#",
+        ".NET Core",
+        "Development",
+        "Compliance"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Presidential Life Insurance Company",
+      "role": "Software Development Team Lead",
+      "dates": "September 2011 – March 2013",
+      "tenure_years": 1.5,
+      "bullet": "Created and instituted development standards for the department",
+      "skills": [
+        "Development Standards",
+        "Code Quality",
+        "Technical Leadership"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "Presidential Life Insurance Company",
+      "role": "Software Development Team Lead",
+      "dates": "September 2011 – March 2013",
+      "tenure_years": 1.5,
+      "bullet": "Reviewed, recommended, and implemented new technologies for development and maintenance of existing sites",
+      "skills": [
+        "Tool Evaluation",
+        "Technology Adoption",
+        "Technical Leadership"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "Presidential Life Insurance Company",
+      "role": "Software Development Team Lead",
+      "dates": "September 2011 – March 2013",
+      "tenure_years": 1.5,
+      "bullet": "Evaluated team performance with VP of IT for hiring/firing decisions",
+      "skills": [
+        "Performance Management",
+        "Hiring",
+        "Team Leadership"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "Presidential Life Insurance Company",
+      "role": "Software Development Team Lead",
+      "dates": "September 2011 – March 2013",
+      "tenure_years": 1.5,
+      "bullet": "Implemented Team Foundation Server within the department",
+      "skills": [
+        "TFS",
+        "Technology Adoption",
+        "Development Standards"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "UPS (Consultant for Avanade)",
+      "role": "Software Development Manager",
+      "dates": "March 2010 – September 2011",
+      "tenure_years": 1.5,
+      "bullet": "Gathered and documented requirements for long-term projects and ad-hoc requests, ensuring clear project direction",
+      "skills": [
+        "Business Analysis",
+        "Requirements Gathering",
+        "Stakeholder Management",
+        "Technical Leadership"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "Perry Systems, Inc",
+      "role": "Content Management System Optimization",
+      "dates": "September 2009 – January 2010",
+      "tenure_years": 0.3,
+      "bullet": "Led offshore development team in the implementation of the CMS enhancements",
+      "skills": [
+        "Offshore Coordination",
+        "Team Leadership",
+        "CMS",
+        "Development"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "Perry Systems, Inc",
+      "role": "Content Management System Optimization",
+      "dates": "September 2009 – January 2010",
+      "tenure_years": 0.3,
+      "bullet": "Developed centralized knowledge base using SharePoint 2007 to improve collaboration and knowledge sharing between developers and product managers",
+      "skills": [
+        "SharePoint",
+        "Knowledge Management",
+        "Development",
+        "Technology Adoption",
+        "Operational Efficiency"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Perry Systems, Inc",
+      "role": "Content Management System Optimization",
+      "dates": "September 2009 – January 2010",
+      "tenure_years": 0.3,
+      "bullet": "Established development standards (SVN, SQL, naming conventions) to ensure code quality and maintainability",
+      "skills": [
+        "Development Standards",
+        "Code Quality",
+        "Technical Leadership"
+      ],
+      "category": [
+        "management"
+      ]
+    },
+    {
+      "company": "Thomson Group",
+      "role": "Consultant – Software Development Team Lead",
+      "dates": "December 2005 – August 2006",
+      "tenure_years": 0.8,
+      "bullet": "Led a development team in designing and coding a corporate workflow tax application (ASP.NET 2.0, VB.NET 2.0) to streamline tax processes",
+      "skills": [
+        "ASP.NET",
+        "VB.NET",
+        "Team Leadership",
+        "Development",
+        "Operational Efficiency"
+      ],
+      "category": [
+        "development"
+      ]
+    },
+    {
+      "company": "Thomson Group",
+      "role": "Consultant – Software Development Team Lead",
+      "dates": "December 2005 – August 2006",
+      "tenure_years": 0.8,
+      "bullet": "Championed innovation by investigating and adopting new development tools, frameworks, and architectures to enhance efficiency, user interface design, and loading speed",
+      "skills": [
+        "Technology Adoption",
+        "Tool Evaluation",
+        "Architecture",
+        "System Performance",
+        "Operational Efficiency"
+      ],
+      "category": [
+        "management"
+      ]
+    }
+  ]
+}

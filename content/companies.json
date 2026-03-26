@@ -1,0 +1,60 @@
+{
+  "companies": [
+    {
+      "name": "Spruce Technologies",
+      "dates": "January 2022 – September 2024",
+      "industry": "Government Technology / Consulting",
+      "domain": "Public sector software delivery for NYC municipal departments",
+      "context": "Delivered .NET Core solutions for NYC Department of Health and Mental Hygiene and Department of Education. Government compliance, data integrity, and security were primary concerns."
+    },
+    {
+      "name": "NRG (formerly Direct Energy)",
+      "dates": "March 2013 – January 2022",
+      "industry": "Energy / Utilities",
+      "domain": "Retail energy billing, CIS/CRM, B2B and residential customer management",
+      "context": "Large-scale financial transaction processing — billing millions of customers across 15 states with 100s of utility integrations. High-volume data exchange via EDI. Operationally similar to FinTech in terms of financial data accuracy, regulatory compliance, and transaction scale."
+    },
+    {
+      "name": "UPS (Consultant for Avanade)",
+      "dates": "March 2010 – September 2011",
+      "industry": "Logistics / Supply Chain",
+      "domain": "Global shipping and operations software",
+      "context": "Enterprise-scale logistics platform. Managed onshore and offshore teams delivering global operations software integrating with MQSeries messaging infrastructure."
+    },
+    {
+      "name": "KPMG (Consultant to FTE)",
+      "dates": "August 2006 – September 2009",
+      "industry": "Professional Services / Accounting / Financial Advisory",
+      "domain": "Big 4 accounting, audit, tax, and advisory firm",
+      "context": "Financial services environment — audit, tax, and advisory for major corporations. Built internal platforms used across the firm. Directly adjacent to FinTech and financial domain work."
+    },
+    {
+      "name": "Presidential Life Insurance Company",
+      "dates": "September 2011 – March 2013",
+      "industry": "Insurance / Financial Services",
+      "domain": "Life insurance policy management and corporate governance",
+      "context": "Financial services company. Built Board of Directors portal and data validation systems for financial recordkeeping. Insurance is a regulated financial services sector."
+    },
+    {
+      "name": "Perry Systems, Inc",
+      "dates": "September 2009 – January 2010",
+      "industry": "Software / Media Technology",
+      "domain": "Content management systems",
+      "context": "High-throughput CMS optimization — scaled to 2 million requests per hour. Short-term engagement focused on performance and offshore team leadership."
+    },
+    {
+      "name": "Thomson Group",
+      "dates": "December 2005 – August 2006",
+      "industry": "Financial / Tax Software",
+      "domain": "Corporate tax workflow automation and financial data management",
+      "context": "Built a SaaS corporate workflow tax application — directly in the financial/tax domain. Multi-tenant product serving corporate clients with complex tax processing and financial data needs. Financial services environment with strict data accuracy requirements."
+    },
+    {
+      "name": "Mr Brooks Products and Services",
+      "dates": "January 2025 – Present",
+      "industry": "Independent Software Development / AI",
+      "domain": "AI-assisted web and SaaS product development",
+      "context": "Freelance development using generative AI tooling (Claude, Cursor, Kilocode) to build modern web applications with PostgreSQL, React, Node, Docker, and MongoDB."
+    }
+  ]
+}

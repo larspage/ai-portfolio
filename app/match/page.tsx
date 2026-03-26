@@ -7,7 +7,7 @@ export default function MatchPage() {
         <h1 className="section-title">Job Match Analysis</h1>
         <p className="section-subtitle">
           Paste a job description below to see how my experience aligns with the role requirements.
-          Our AI will analyze the match and provide detailed insights.
+          The AI will analyze the match and provide detailed insights.
         </p>
       </header>
 
@@ -32,7 +32,7 @@ export default function MatchPage() {
             </div>
             <div>
               <h3 className="font-medium text-slate-800">AI Analysis</h3>
-              <p className="text-sm text-slate-600">Our AI compares the requirements against my resume and experience.</p>
+              <p className="text-sm text-slate-600">The AI compares the requirements against my resume and experience.</p>
             </div>
           </div>
 
