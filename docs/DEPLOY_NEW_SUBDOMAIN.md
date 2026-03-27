@@ -34,14 +34,13 @@ SSH in:
 ssh root@167.71.96.57
 ```
 
-Clone the repo and install:
+Clone the repo and install runtime deps only. **Do not build on the server** — the droplet's QEMU CPU causes a SIGBUS crash in the SWC Rust compiler. Builds happen in CI (see Step 6).
 
 ```bash
 mkdir -p /var/www/<appname>
 cd /var/www/<appname>
 git clone <repo-url> .
 npm install --omit=dev
-npm run build   # if applicable
 ```
 
 Set any required env vars in `/var/www/<appname>/.env.local` (or export to shell before starting PM2).
@@ -151,7 +150,22 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy via SSH
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Update server code and runtime deps
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.DO_HOST }}
@@ -159,12 +173,36 @@ jobs:
           key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/<appname>
-            git pull origin main
+            git fetch origin main
+            git reset --hard origin/main
             npm install --omit=dev
-            npm run build
+
+      - name: Setup SSH for rsync
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DO_SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ secrets.DO_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Sync build artifact to server
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            .next/ \
+            ${{ secrets.DO_USER }}@${{ secrets.DO_HOST }}:/var/www/<appname>/.next/
+
+      - name: Restart app
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
+          script: |
             pm2 restart <appname>
             pm2 save
 ```
+
+> **Why rsync instead of building on the server:** The droplet is a QEMU VM whose CPU doesn't support the AVX instructions required by Next.js's SWC compiler. Building on the GitHub Actions runner (ubuntu-latest) works fine; the compiled `.next/` artifact is then transferred to the server.
 
 ---
 
