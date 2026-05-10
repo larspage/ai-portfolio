@@ -67,7 +67,7 @@ Using Agile methodology including Kanban and Scrum for more than 10 years and wa
 - Modernized development practices by implementing TFS and Nuget, transitioning to a Nuget-centric architecture
 - Decreased initial build times from hours to minutes by eliminating manual effort to find and install properly versioned DLLs
 
-### SaaS Platform | Thomson Group
+### SaaS Platform | Thomson Group | December 2005 – August 2006
 - Developed a SaaS product using a 3-tier architecture (AJAX, SQL Server 2000, XML, VB.NET 2.0, ASP.NET 2.0)
 - Designed configuration-driven fields and data types to provide flexibility and adaptability for each client independently
 - Created and optimized complex stored procedures exceeding 2,000 lines for dynamic data access and manipulation

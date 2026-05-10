@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateCompletion } from '@/lib/openai';
-import { parseResume } from '@/lib/resume';
+import { parseResume, parseResumeDev } from '@/lib/resume';
 import { SYSTEM_PROMPTS, createAnalysisPrompt } from '@/lib/prompts';
 
 export const dynamic = 'force-dynamic';
 
 type SectionType = 'overview' | 'leadership' | 'architecture' | 'development';
+type ResumeVersion = 'standard' | 'developer';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { section } = body as { section: SectionType };
+    const { section, version = 'standard' } = body as { section: SectionType; version?: ResumeVersion };
 
     if (!section || !['overview', 'leadership', 'architecture', 'development'].includes(section)) {
       return NextResponse.json(
@@ -19,24 +20,39 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const resume = await parseResume();
+    if (!['standard', 'developer'].includes(version)) {
+      return NextResponse.json(
+        { error: 'Invalid version. Must be one of: standard, developer' },
+        { status: 400 }
+      );
+    }
 
     let resumeContent: string;
-    switch (section) {
-      case 'overview':
-        resumeContent = `${resume.sections.summary}\n\n${resume.sections.skills}`;
-        break;
-      case 'leadership':
-        resumeContent = resume.sections.leadership;
-        break;
-      case 'architecture':
-        resumeContent = resume.sections.architecture;
-        break;
-      case 'development':
-        resumeContent = resume.sections.development;
-        break;
-      default:
-        resumeContent = resume.content;
+    if (version === 'developer') {
+      const devResume = parseResumeDev();
+      // Developer resume doesn't have separate leadership/architecture/development sections;
+      // use full content for section-specific analysis — AI extracts what's relevant
+      resumeContent = section === 'overview'
+        ? `${devResume.sections.summary}\n\n${devResume.sections.skills}`
+        : devResume.content;
+    } else {
+      const resume = await parseResume();
+      switch (section) {
+        case 'overview':
+          resumeContent = `${resume.sections.summary}\n\n${resume.sections.skills}`;
+          break;
+        case 'leadership':
+          resumeContent = resume.sections.leadership;
+          break;
+        case 'architecture':
+          resumeContent = resume.sections.architecture;
+          break;
+        case 'development':
+          resumeContent = resume.sections.development;
+          break;
+        default:
+          resumeContent = resume.content;
+      }
     }
 
     const systemPrompt = SYSTEM_PROMPTS[section];

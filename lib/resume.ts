@@ -110,3 +110,120 @@ export function getResumeSection(sectionName: keyof ParsedResume['sections']): P
     return resume.sections[sectionName];
   });
 }
+
+// --- Resume Data (structured bullet format) ---
+
+export interface ResumeDataBullet {
+  company: string;
+  role: string;
+  dates: string;
+  tenure_years: number;
+  bullet: string;
+  skills: string[];
+  category: string[];
+  project?: string;
+  extended_description?: string;
+}
+
+export interface ResumeDataSet {
+  notes: string;
+  bullets: ResumeDataBullet[];
+}
+
+export function parseResumeData(): ResumeDataSet {
+  const dataPath = path.join(process.cwd(), 'content', 'resume-data.json');
+  if (!fs.existsSync(dataPath)) {
+    return { notes: '', bullets: [] };
+  }
+  return JSON.parse(fs.readFileSync(dataPath, 'utf8')) as ResumeDataSet;
+}
+
+// --- Developer Resume ---
+
+const resumeDevPath = path.join(process.cwd(), 'content', 'resume-developer.md');
+
+export function getResumeDevRaw(): string {
+  return fs.readFileSync(resumeDevPath, 'utf8');
+}
+
+export interface ParsedResumeDev {
+  content: string;
+  sections: {
+    summary: string;
+    skills: string;
+    experience: string;
+    education: string;
+  };
+}
+
+export function parseResumeDev(): ParsedResumeDev {
+  const content = getResumeDevRaw();
+
+  const lines = content.split('\n');
+  const sections: ParsedResumeDev['sections'] = {
+    summary: '',
+    skills: '',
+    experience: '',
+    education: '',
+  };
+
+  let currentSection: keyof ParsedResumeDev['sections'] | null = null;
+  let currentLines: string[] = [];
+
+  for (const line of lines) {
+    // Detect section headers in developer resume
+    const trimmed = line.trim();
+    if (trimmed === 'Summary') {
+      flushSection();
+      currentSection = 'summary';
+    } else if (trimmed === 'Technical Skills') {
+      flushSection();
+      currentSection = 'skills';
+    } else if (trimmed === 'Professional Experience') {
+      flushSection();
+      currentSection = 'experience';
+    } else if (trimmed === 'Education') {
+      flushSection();
+      currentSection = 'education';
+    } else if (currentSection) {
+      currentLines.push(line);
+    }
+  }
+  flushSection();
+
+  function flushSection() {
+    if (currentSection && currentLines.length > 0) {
+      sections[currentSection] = currentLines.join('\n').trim();
+    }
+    currentLines = [];
+  }
+
+  return { content, sections };
+}
+
+export function findNewBullets(markdownContent: string, existingBullets: ResumeDataBullet[]): string[] {
+  // Extract bullet points (lines starting with -) from markdown
+  const bulletLines: string[] = [];
+  for (const line of markdownContent.split('\n')) {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('- ') && !trimmed.startsWith('- **') && !trimmed.match(/^-\s*$/)) {
+      bulletLines.push(trimmed.replace(/^- /, '').trim());
+    }
+  }
+
+  // Filter out bullets that already exist in resume-data.json
+  const existingTexts: string[] = existingBullets.map(
+    b => b.bullet.toLowerCase().replace(/\s+/g, ' ').trim()
+  );
+
+  return bulletLines.filter(text => {
+    const normalized = text.toLowerCase().replace(/\s+/g, ' ').trim();
+    // Check exact match first
+    if (existingTexts.includes(normalized)) return false;
+    // Check substring containment (if existing text contains this, skip)
+    for (const existing of existingTexts) {
+      if (existing.includes(normalized) || normalized.includes(existing)) return false;
+    }
+    return true;
+  });
+}

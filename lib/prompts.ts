@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { buildProjectContextForSection } from './projects';
 
 export const SYSTEM_PROMPTS = {
   overview: `You are a professional resume analyst helping to create compelling professional summaries.
@@ -142,7 +143,8 @@ export function createAnalysisPrompt(section: string, resumeContent: string): st
   const skillSummary = computeSkillSummary();
   const roleDurations = parseRoleDurations(resumeContent);
   const companyContext = loadCompanyContext();
-  return `Please analyze the following resume content and provide your assessment.
+  const projectContext = buildProjectContextForSection(section);
+  let prompt = `Please analyze the following resume content and provide your assessment.
 
 SKILL SUMMARY (pre-computed — use these exact year totals when mentioning experience with any skill):
 ${skillSummary}
@@ -151,10 +153,20 @@ COMPANY CONTEXT (industry, domain, and notable context per employer — use when
 ${companyContext}
 
 ROLE DURATIONS (use for timeline context):
-${roleDurations}
+${roleDurations}`;
+
+  if (projectContext) {
+    prompt += `
+
+PROJECT CONTEXT (detailed project docs with technologies, budget, team size, and impact — use when analyzing specific projects):
+${projectContext}`;
+  }
+
+  prompt += `
 
 RESUME:
 ${resumeContent}`;
+  return prompt;
 }
 
 function loadCompanyContext(): string {
