@@ -2,17 +2,43 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-const navItems = [
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+const staticItems: NavItem[] = [
   { href: '/', label: 'Home' },
-  { href: '/leadership', label: 'Leadership' },
-  { href: '/architecture', label: 'Architecture' },
-  { href: '/development', label: 'Development' },
+  { href: '/resume', label: 'Resume' },
   { href: '/match', label: 'Job Match' },
+  { href: '/settings', label: 'Settings' },
 ];
 
 export default function Navigation() {
   const pathname = usePathname();
+  const [sectionItems, setSectionItems] = useState<NavItem[]>([]);
+
+  useEffect(() => {
+    fetch('/api/sections')
+      .then(res => res.json())
+      .then(data => {
+        if (data.sections?.length) {
+          setSectionItems(
+            data.sections.map((s: { name: string; label: string }) => ({
+              href: `/${s.name}`,
+              label: s.label || s.name,
+            }))
+          );
+        }
+      })
+      .catch(() => {
+        // API not available — no dynamic sections
+      });
+  }, []);
+
+  const navItems = [...staticItems, ...sectionItems];
 
   return (
     <nav className="bg-gradient-to-r from-white to-slate-50 border-b border-slate-200 sticky top-0 z-50 shadow-sm">
@@ -34,14 +60,14 @@ export default function Navigation() {
               </Link>
             ))}
           </div>
-          <MobileMenu pathname={pathname} />
+          <MobileMenu pathname={pathname} navItems={navItems} />
         </div>
       </div>
     </nav>
   );
 }
 
-function MobileMenu({ pathname }: { pathname: string }) {
+function MobileMenu({ pathname, navItems }: { pathname: string; navItems: NavItem[] }) {
   return (
     <div className="md:hidden">
       <details className="relative">

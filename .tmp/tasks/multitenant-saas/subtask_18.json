@@ -1,0 +1,26 @@
+{
+  "id": "multitenant-saas-18",
+  "seq": "18",
+  "title": "Add rate limiting and input validation with Zod schemas",
+  "status": "pending",
+  "depends_on": ["17"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "app/api/tenant/analyze/route.ts"
+  ],
+  "acceptance_criteria": [
+    "Zod schemas defined for every API route input (body, params, query)",
+    "Rate limiting middleware created using in-memory sliding window (upgradable to Redis)",
+    "Default rate limit: 30 requests/minute per authenticated user, 10/minute per IP for unauthenticated",
+    "Rate limit headers (X-RateLimit-*) returned in all API responses",
+    "Zod validation errors return structured 400 responses with field-level messages",
+    "Rate limit exceeded returns 429 with Retry-After header"
+  ],
+  "deliverables": [
+    "lib/validation/schemas.ts",
+    "lib/middleware/rate-limit.ts",
+    "lib/middleware/validate.ts"
+  ]
+}

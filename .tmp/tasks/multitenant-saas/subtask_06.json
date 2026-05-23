@@ -1,0 +1,28 @@
+{
+  "id": "multitenant-saas-06",
+  "seq": "06",
+  "title": "Configure DO Spaces client and presigned URL generation for file uploads",
+  "status": "completed",
+  "depends_on": [
+    "05"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "@aws-sdk/client-s3 and @aws-sdk/s3-request-presigner added to dependencies",
+    "S3 client configured with DO Spaces endpoint (nyc3.digitaloceanspaces.com)",
+    "Presigned POST URL generation implemented for secure file uploads",
+    "Presigned GET URL generation for reading files with expiration",
+    "Bucket and region configurable via environment variables (DO_SPACES_*)",
+    "Generated URLs expire after configurable duration (default 15 min for uploads, 1 hour for reads)"
+  ],
+  "deliverables": [
+    "lib/storage/client.ts",
+    "lib/storage/presigned.ts"
+  ],
+  "started_at": "2026-05-10T12:09:18.160Z",
+  "completed_at": "2026-05-10T12:10:00.935Z",
+  "completion_summary": "Installed @aws-sdk/client-s3 and @aws-sdk/s3-request-presigner. Created lib/storage/client.ts (S3 client configured for DO Spaces endpoint, lazy singleton). Created lib/storage/presigned.ts (getPresignedUploadUrl, getPresignedDownloadUrl, deleteObject, buildTenantKey)."
+}

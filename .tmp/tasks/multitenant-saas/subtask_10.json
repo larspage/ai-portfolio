@@ -1,0 +1,32 @@
+{
+  "id": "multitenant-saas-10",
+  "seq": "10",
+  "title": "Implement user authentication with email+password and Google OAuth",
+  "status": "in_progress",
+  "depends_on": [
+    "03",
+    "05"
+  ],
+  "parallel": true,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/auth.ts"
+  ],
+  "acceptance_criteria": [
+    "Credentials provider with email/password login and bcrypt password hashing",
+    "Google OAuth provider configured for one-click social login",
+    "Database sessions active: session created on login, destroyed on logout",
+    "tenant_id embedded in session on login (from users.tenant_id)",
+    "Signup creates user record linked to existing tenant (via invite), or creates new tenant if standalone",
+    "Login redirects to dashboard for existing users, to onboarding for new signups",
+    "Password reset flow: forgot password → email with reset link → new password"
+  ],
+  "deliverables": [
+    "lib/auth.ts (updated)",
+    "app/api/auth/reset-password/route.ts",
+    "app/(auth)/login/page.tsx",
+    "app/(auth)/signup/page.tsx"
+  ],
+  "started_at": "2026-05-10T12:13:11.797Z"
+}

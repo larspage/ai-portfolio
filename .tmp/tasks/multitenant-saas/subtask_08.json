@@ -1,0 +1,29 @@
+{
+  "id": "multitenant-saas-08",
+  "seq": "08",
+  "title": "Create Nginx reverse proxy configuration with health checks and zero-downtime upstream",
+  "status": "completed",
+  "depends_on": [
+    "07"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "nginx.conf created as reverse proxy to Next.js app on port 3000",
+    "Health check endpoint (/api/health) configured for upstream switching",
+    "Blue-green upstream blocks defined (app-blue:3001, app-green:3002) with active/passive switching",
+    "SSL termination configured with Let's Encrypt certbot auto-renewal",
+    "HTTP/2 enabled, gzip compression configured",
+    "Security headers: X-Frame-Options, X-Content-Type-Options, Referrer-Policy set"
+  ],
+  "deliverables": [
+    "nginx/nginx.conf",
+    "nginx/nginx-blue.conf",
+    "nginx/nginx-green.conf",
+    "scripts/switch-upstream.sh"
+  ],
+  "completed_at": "2026-05-10T12:11:47.212Z",
+  "completion_summary": "Created nginx/nginx.conf (HTTP→HTTPS redirect, gzip, SSL, proxy). Created nginx-blue.conf and nginx-green.conf for blue-green upstream switching. Created security-headers.conf (CSP, HSTS, X-Frame-Options, Permissions-Policy). Created /api/health endpoint. Created scripts/switch-upstream.sh. Updated docker-compose.yml with app-blue and app-green services."
+}

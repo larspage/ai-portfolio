@@ -1,0 +1,30 @@
+{
+  "id": "multitenant-saas-29",
+  "seq": "29",
+  "title": "Build analysis history view with pagination and search",
+  "status": "pending",
+  "depends_on": ["28"],
+  "parallel": false,
+  "suggested_agent": "OpenFrontendSpecialist",
+  "context_files": [
+    ".opencode/context/ui/web/ui-styling-standards.md"
+  ],
+  "reference_files": [
+    "app/(dashboard)/resumes/[id]/page.tsx"
+  ],
+  "acceptance_criteria": [
+    "History page at /dashboard/history shows all analyzed resumes in a table/list",
+    "Each row shows: filename, upload date, analysis date, file size, status indicator",
+    "Clicking a row navigates to /dashboard/resumes/[id] for full results",
+    "Server-side pagination with 10 items per page",
+    "Search/filter by filename or date range",
+    "Delete action with confirmation dialog",
+    "Empty state shown when no resumes have been uploaded"
+  ],
+  "deliverables": [
+    "app/(dashboard)/history/page.tsx",
+    "components/history/history-table.tsx",
+    "components/history/history-filters.tsx",
+    "components/history/pagination.tsx"
+  ]
+}

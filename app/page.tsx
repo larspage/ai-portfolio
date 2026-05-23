@@ -18,9 +18,24 @@ interface ResumeMetadata {
   location: string;
 }
 
+interface SectionConfig {
+  name: string;
+  label: string;
+  focus_description: string | null;
+}
+
+const sectionIcons: Record<string, string> = {
+  leadership: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+  architecture: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10',
+  development: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+};
+
+const defaultIcon = 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z';
+
 export default function HomePage() {
   const [overview, setOverview] = useState<OverviewData | null>(null);
   const [metadata, setMetadata] = useState<ResumeMetadata | null>(null);
+  const [sections, setSections] = useState<SectionConfig[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isSkillsExpanded, setIsSkillsExpanded] = useState(false);
@@ -28,13 +43,14 @@ export default function HomePage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const [overviewRes, metadataRes] = await Promise.all([
+        const [overviewRes, metadataRes, sectionsRes] = await Promise.all([
           fetch('/api/analyze', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ section: 'overview' }),
           }),
           fetch('/api/resume'),
+          fetch('/api/sections'),
         ]);
 
         if (!overviewRes.ok) {
@@ -47,6 +63,11 @@ export default function HomePage() {
         if (metadataRes.ok) {
           const metadataData = await metadataRes.json();
           setMetadata(metadataData.metadata);
+        }
+
+        if (sectionsRes.ok) {
+          const sectionsData = await sectionsRes.json();
+          setSections(sectionsData.sections || []);
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
@@ -167,47 +188,40 @@ export default function HomePage() {
         )}
       </section>
 
-      {/* Quick Links */}
-      <section className="animate-slide-up">
-        <h2 className="section-title text-center">Explore My Experience</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <Link href="/leadership" className="card hover:shadow-lg transition-shadow group">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-umber-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-umber-200 transition-colors">
-                <svg className="w-8 h-8 text-umber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-umber-900 mb-2">Leadership</h3>
-              <p className="text-slate-600">Team management, mentorship, and strategic initiatives</p>
-            </div>
-          </Link>
-
-          <Link href="/architecture" className="card hover:shadow-lg transition-shadow group">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-umber-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-umber-200 transition-colors">
-                <svg className="w-8 h-8 text-umber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-umber-900 mb-2">Architecture</h3>
-              <p className="text-slate-600">System design, scalability, and technical decisions</p>
-            </div>
-          </Link>
-
-          <Link href="/development" className="card hover:shadow-lg transition-shadow group">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-umber-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-umber-200 transition-colors">
-                <svg className="w-8 h-8 text-umber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-umber-900 mb-2">Development</h3>
-              <p className="text-slate-600">Technical achievements and project accomplishments</p>
-            </div>
-          </Link>
-        </div>
-      </section>
+      {/* Dynamic Section Cards */}
+      {sections.length > 0 && (
+        <section className="animate-slide-up">
+          <h2 className="section-title text-center">Explore My Experience</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {sections.map((section) => (
+              <Link
+                key={section.name}
+                href={`/${section.name}`}
+                className="card hover:shadow-lg transition-shadow group"
+              >
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-umber-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-umber-200 transition-colors">
+                    <svg className="w-8 h-8 text-umber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d={sectionIcons[section.name] || defaultIcon}
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold text-umber-900 mb-2">
+                    {section.label || section.name}
+                  </h3>
+                  {section.focus_description && (
+                    <p className="text-slate-600">{section.focus_description}</p>
+                  )}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA for Recruiters */}
       <section className="card bg-gradient-to-r from-umber-800 to-umber-900 text-white text-center animate-slide-up shadow-2xl">

@@ -41,3 +41,7 @@ next-env.d.ts
 # editor swap files
 *.swp
 *.kate-swp
+
+# Docker - env files only (configs tracked in git)
+/.env
+/.env.production

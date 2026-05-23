@@ -1,0 +1,32 @@
+{
+  "id": "multitenant-saas-02",
+  "seq": "02",
+  "title": "Set up PostgreSQL 16 with Drizzle schema defining all 8 tenant-scoped tables",
+  "status": "completed",
+  "depends_on": [
+    "01"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "tsconfig.json"
+  ],
+  "reference_files": [
+    "package.json"
+  ],
+  "acceptance_criteria": [
+    "Drizzle config file created with postgres driver connection to DATABASE_URL",
+    "Schema file defines all 8 tables: tenants, users, sessions, accounts, resumes, analyses, analysis_cache, ad_clicks",
+    "Every tenant-scoped table has UUID tenant_id column with foreign key to tenants.id",
+    "Migrations generated and runnable via `npm run db:migrate`",
+    "drizzle-orm and postgres (or pg) added to package.json dependencies"
+  ],
+  "deliverables": [
+    "lib/db/schema.ts",
+    "lib/db/index.ts",
+    "drizzle.config.ts",
+    "lib/db/migrations/0000_initial.sql"
+  ],
+  "completed_at": "2026-05-10T12:04:11.630Z",
+  "completion_summary": "Installed drizzle-orm, postgres, drizzle-kit. Created schema with 9 tables (tenants, users, sessions, accounts, resumes, analyses, analysis_cache, ad_clicks, verification_tokens). Generated migration. Created seed script. Added db scripts to package.json."
+}

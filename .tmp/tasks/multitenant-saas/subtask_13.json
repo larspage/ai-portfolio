@@ -1,0 +1,26 @@
+{
+  "id": "multitenant-saas-13",
+  "seq": "13",
+  "title": "Implement file upload to DO Spaces with presigned POST URLs",
+  "status": "pending",
+  "depends_on": ["06", "09"],
+  "parallel": true,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/storage/presigned.ts"
+  ],
+  "acceptance_criteria": [
+    "POST /api/tenant/upload/request — returns presigned POST URL and fields for client-side upload",
+    "POST /api/tenant/upload/confirm — called after upload, verifies file exists and saves resume record",
+    "Uploaded files stored in tenant-prefixed path: {tenant_id}/{uuid}/{filename}",
+    "File type validation: only PDF, DOCX, DOC allowed (checked server-side)",
+    "File size limit: 10MB enforced server-side",
+    "Upload confirmation triggers text extraction pipeline asynchronously"
+  ],
+  "deliverables": [
+    "app/api/tenant/upload/request/route.ts",
+    "app/api/tenant/upload/confirm/route.ts",
+    "lib/storage/upload-service.ts"
+  ]
+}

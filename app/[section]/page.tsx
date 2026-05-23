@@ -1,23 +1,36 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import SummaryCard from '@/components/SummaryCard';
 import LoadingSpinner from '@/components/LoadingSpinner';
 
-interface DevelopmentHighlight {
+interface Highlight {
   title: string;
   description: string;
-  technologies: string[];
-  metrics: string;
+  impact?: string;
+  technologies?: string[];
+  metrics?: string;
 }
 
-interface DevelopmentData {
+interface SectionData {
   summary: string;
-  highlights: DevelopmentHighlight[];
+  highlights: Highlight[];
 }
 
-export default function DevelopmentPage() {
-  const [data, setData] = useState<DevelopmentData | null>(null);
+function formatLabel(name: string): string {
+  return name
+    .split(/[-_\s]+/)
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
+export default function SectionPage() {
+  const params = useParams();
+  const section = params.section as string;
+  const label = formatLabel(section);
+
+  const [data, setData] = useState<SectionData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,11 +40,12 @@ export default function DevelopmentPage() {
         const response = await fetch('/api/analyze', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ section: 'development' }),
+          body: JSON.stringify({ section }),
         });
 
         if (!response.ok) {
-          throw new Error('Failed to fetch development data');
+          const err = await response.json().catch(() => ({ error: 'Unknown error' }));
+          throw new Error(err.error || `Failed to fetch ${label.toLowerCase()} data`);
         }
 
         const result = await response.json();
@@ -44,17 +58,17 @@ export default function DevelopmentPage() {
     }
 
     fetchData();
-  }, []);
+  }, [section, label]);
 
   if (isLoading) {
-    return <LoadingSpinner message="Analyzing development accomplishments..." />;
+    return <LoadingSpinner message={`Analyzing ${label.toLowerCase()} experience...`} />;
   }
 
   if (error) {
     return (
       <div className="text-center py-12">
         <div className="card max-w-md mx-auto">
-          <h2 className="text-xl font-semibold text-red-600 mb-2">Error</h2>
+          <h2 className="text-xl font-semibold text-red-600 mb-2">{label}</h2>
           <p className="text-slate-600">{error}</p>
         </div>
       </div>
@@ -64,19 +78,20 @@ export default function DevelopmentPage() {
   return (
     <div className="space-y-8">
       <header>
-        <h1 className="section-title">Development Accomplishments</h1>
+        <h1 className="section-title">{label}</h1>
         <p className="section-subtitle">
-          {data?.summary || 'Key technical achievements and project highlights.'}
+          {data?.summary || `${label} highlights and accomplishments.`}
         </p>
       </header>
 
       <div className="grid gap-6">
-        {data?.highlights && data.highlights.map((highlight, index) => (
+        {data?.highlights?.map((highlight, index) => (
           <SummaryCard
             key={index}
             title={highlight.title}
             description={highlight.description}
             technologies={highlight.technologies}
+            impact={highlight.impact}
             metrics={highlight.metrics}
           />
         ))}
@@ -84,7 +99,7 @@ export default function DevelopmentPage() {
 
       {(!data?.highlights || data.highlights.length === 0) && (
         <div className="card text-center py-12">
-          <p className="text-slate-500">No development highlights available.</p>
+          <p className="text-slate-500">No {label.toLowerCase()} highlights available.</p>
         </div>
       )}
     </div>

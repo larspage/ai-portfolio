@@ -1,0 +1,32 @@
+{
+  "id": "multitenant-saas-03",
+  "seq": "03",
+  "title": "Install and configure Auth.js v5 with Drizzle adapter and database sessions",
+  "status": "completed",
+  "depends_on": [
+    "02"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "tsconfig.json"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "next-auth@5 and @auth/drizzle-adapter installed",
+    "Auth.js config created at lib/auth.ts with DrizzleAdapter pointing to DB schema",
+    "Session strategy set to 'database' (not JWT)",
+    "Credentials provider (email+password) configured with bcrypt hashing",
+    "Google OAuth provider configured",
+    "Session callback embeds tenant_id into session object",
+    "auth() helper exported for server-side session access",
+    "signIn/signOut functions exported for client-side use"
+  ],
+  "deliverables": [
+    "lib/auth.ts",
+    "lib/auth.config.ts",
+    "app/api/auth/[...nextauth]/route.ts"
+  ],
+  "completed_at": "2026-05-10T12:07:04.300Z",
+  "completion_summary": "Installed next-auth@5.0.0-beta.31, @auth/drizzle-adapter, bcryptjs. Created lib/auth.ts with DrizzleAdapter (credentials + Google OAuth), route handler at app/api/auth/[...nextauth]/route.ts. Updated schema with adapter-compatible property names (camelCase) + authenticators table. Regenerated migration (10 tables)."
+}

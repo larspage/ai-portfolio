@@ -1,0 +1,29 @@
+{
+  "id": "multitenant-saas-07",
+  "seq": "07",
+  "title": "Set up GitHub Actions CI/CD pipeline for Docker deployment with blue-green strategy",
+  "status": "completed",
+  "depends_on": [
+    "01"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "GitHub Actions workflow at .github/workflows/deploy.yml",
+    "CI steps: npm ci, npm run typecheck, npm run lint, npm run build",
+    "CD steps: SSH into droplet, pull latest images, docker compose up with health checks",
+    "Blue-green deployment: two compose projects (blue/green), nginx upstream switches on health",
+    "Docker Compose health checks configured for all services (app, db, nginx)",
+    "Deployment script handles rollback on health check failure"
+  ],
+  "deliverables": [
+    ".github/workflows/deploy.yml",
+    "scripts/deploy.sh",
+    "scripts/healthcheck.sh"
+  ],
+  "started_at": "2026-05-10T12:10:00.945Z",
+  "completed_at": "2026-05-10T12:11:47.211Z",
+  "completion_summary": "Rewrote .github/workflows/deploy.yml for Docker deployment: builds image, compresses, SCPs to server, loads via SSH, blue-green rotation with health check polling, nginx upstream switching, old container cleanup."
+}

@@ -1,0 +1,30 @@
+{
+  "id": "multitenant-saas-39",
+  "seq": "39",
+  "title": "Set up SSL certificates with Let's Encrypt and migrate production from PM2 to Docker",
+  "status": "pending",
+  "depends_on": ["07", "38"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "docker-compose.yml",
+    "nginx/nginx.conf",
+    ".github/workflows/deploy.yml"
+  ],
+  "acceptance_criteria": [
+    "Let's Encrypt certbot configured with auto-renewal cron job",
+    "SSL certificates mounted as Docker volumes in nginx container",
+    "Current PM2 deployment documented for rollback if needed",
+    "Docker Compose production deployment tested on staging DO droplet first",
+    "Migration cutover plan: DNS TTL lowered, health check confirmed, traffic switched to Docker",
+    "Old PM2 process stopped after confirming Docker deployment healthy",
+    "Deployment runbook updated with Docker commands and rollback procedures"
+  ],
+  "deliverables": [
+    "nginx/ssl/init-letsencrypt.sh",
+    "scripts/migrate-pm2-to-docker.sh",
+    "docs/deployment/runbook.md",
+    "docs/deployment/migration-plan.md"
+  ]
+}

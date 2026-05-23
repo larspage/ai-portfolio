@@ -1,0 +1,31 @@
+{
+  "id": "multitenant-saas-36",
+  "seq": "36",
+  "title": "Write integration tests for critical auth, upload, and analysis flows",
+  "status": "pending",
+  "depends_on": ["35"],
+  "parallel": false,
+  "suggested_agent": "TestEngineer",
+  "context_files": [],
+  "reference_files": [
+    "app/api/tenant/analyze/route.ts",
+    "app/api/tenant/upload/confirm/route.ts",
+    "app/api/tenant/resumes/route.ts"
+  ],
+  "acceptance_criteria": [
+    "Vitest or Jest configured with test DB setup/teardown scripts",
+    "Auth flow tests: signup, login, logout, session persistence, password reset",
+    "Upload flow tests: presigned URL request, file upload, confirmation callback",
+    "Analysis flow tests: trigger analysis, cache hit/miss, retrieve results",
+    "Tenant isolation tests: cross-tenant access returns 404 not data",
+    "Rate limit tests: verify 429 after exceeding limits, headers present",
+    "Test coverage ≥ 70% on critical service files (lib/analysis/*, lib/tenant/*, lib/storage/*)"
+  ],
+  "deliverables": [
+    "tests/integration/auth.test.ts",
+    "tests/integration/upload.test.ts",
+    "tests/integration/analysis.test.ts",
+    "tests/integration/tenant-isolation.test.ts",
+    "tests/setup.ts"
+  ]
+}

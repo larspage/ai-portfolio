@@ -1,0 +1,32 @@
+{
+  "id": "multitenant-saas-21",
+  "seq": "21",
+  "title": "Build signup/login pages with Auth.js integration",
+  "status": "pending",
+  "depends_on": ["03", "08"],
+  "parallel": true,
+  "suggested_agent": "OpenFrontendSpecialist",
+  "context_files": [
+    ".opencode/context/ui/web/ui-styling-standards.md"
+  ],
+  "reference_files": [
+    "app/(auth)/login/page.tsx.template",
+    "app/(auth)/signup/page.tsx.template"
+  ],
+  "acceptance_criteria": [
+    "Login page at /auth/login with email/password form and 'Sign in with Google' button",
+    "Signup page at /auth/signup with email/password form and Google OAuth option",
+    "Forms use server actions or client-side fetch to Auth.js callbacks",
+    "Login errors displayed inline (invalid credentials, account not found)",
+    "After login, redirect to /dashboard (existing users) or /onboarding (new signups)",
+    "Password visibility toggle, form validation, and loading states",
+    "Responsive at all breakpoints, follows design workflow"
+  ],
+  "deliverables": [
+    "app/(auth)/login/page.tsx",
+    "app/(auth)/signup/page.tsx",
+    "components/auth/login-form.tsx",
+    "components/auth/signup-form.tsx",
+    "components/auth/social-buttons.tsx"
+  ]
+}

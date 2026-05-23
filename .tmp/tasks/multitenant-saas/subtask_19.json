@@ -1,0 +1,26 @@
+{
+  "id": "multitenant-saas-19",
+  "seq": "19",
+  "title": "Implement 404-vs-403 cross-tenant access protection",
+  "status": "pending",
+  "depends_on": ["12", "17"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/tenant/repository.ts",
+    "lib/tenant/context.ts"
+  ],
+  "acceptance_criteria": [
+    "404 returned (not 403) when tenant does not own a resource — prevents tenant enumeration",
+    "Repository layer automatically handles 404: findById returns null → route returns 404",
+    "Unauthenticated access to tenant-scoped routes returns 401, not 404 or 403",
+    "Authenticated access to cross-tenant resource returns 404, never reveals existence of other tenant's data",
+    "Migration script adds NOT EXISTS check guideline to all new route handlers",
+    "Security test case exists verifying cross-tenant returns 404 not 403"
+  ],
+  "deliverables": [
+    "lib/tenant/access-control.ts",
+    "lib/middleware/tenant-access.ts"
+  ]
+}

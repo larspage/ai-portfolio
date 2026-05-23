@@ -1,0 +1,28 @@
+{
+  "id": "multitenant-saas-33",
+  "seq": "33",
+  "title": "Implement HTTP security headers: CSP, HSTS, X-Frame-Options, and more",
+  "status": "pending",
+  "depends_on": ["08"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "next.config.mjs",
+    "nginx/nginx.conf"
+  ],
+  "acceptance_criteria": [
+    "Content-Security-Policy header restricts script-src, style-src, img-src, connect-src appropriately",
+    "Strict-Transport-Security header set with max-age=31536000 and includeSubDomains",
+    "X-Frame-Options: DENY prevents clickjacking",
+    "X-Content-Type-Options: nosniff prevents MIME sniffing",
+    "Referrer-Policy: strict-origin-when-cross-origin set",
+    "Permissions-Policy restricts camera, microphone, geolocation to 'none'",
+    "CSP report-uri or report-to configured for violation monitoring"
+  ],
+  "deliverables": [
+    "next.config.mjs (updated with security headers)",
+    "nginx/security-headers.conf",
+    "lib/security/headers.ts"
+  ]
+}

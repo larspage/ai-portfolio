@@ -1,10 +1,5 @@
 import OpenAI from 'openai';
-import { withCache } from './cache';
-import crypto from 'crypto';
-
-function getCacheKey(systemPrompt: string, userPrompt: string): string {
-  return crypto.createHash('sha256').update(systemPrompt + userPrompt).digest('hex');
-}
+import { withAnalysisCache, getCacheKey } from './analysis-cache';
 
 let openaiClient: OpenAI | null = null;
 
@@ -32,7 +27,7 @@ export async function generateCompletion(
 ): Promise<string> {
   const cacheKey = getCacheKey(systemPrompt, userPrompt);
 
-  return withCache<string>(cacheKey, async () => {
+  return withAnalysisCache<string>(cacheKey, async () => {
     const client = getOpenAIClient();
 
     const response = await client.chat.completions.create({

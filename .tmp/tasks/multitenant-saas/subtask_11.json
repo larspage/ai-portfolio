@@ -1,0 +1,26 @@
+{
+  "id": "multitenant-saas-11",
+  "seq": "11",
+  "title": "Create tenant onboarding flow — signup to tenant creation to redirect",
+  "status": "pending",
+  "depends_on": ["09", "10"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/tenant/repositories/tenant-repo.ts"
+  ],
+  "acceptance_criteria": [
+    "Onboarding wizard: step 1 — create account (email/password or Google), step 2 — set tenant name and subdomain, step 3 — configure plan (free/tiered)",
+    "Signup API auto-creates tenant record with unique slug/subdomain",
+    "User record linked to new tenant via tenant_id foreign key",
+    "Onboarding completion redirects user to tenant dashboard",
+    "Tenant slug uniqueness enforced at DB level with unique constraint",
+    "Welcome email sent (or queued for future) on tenant creation"
+  ],
+  "deliverables": [
+    "app/api/tenant/onboarding/route.ts",
+    "app/(auth)/onboarding/page.tsx",
+    "lib/tenant/onboarding.ts"
+  ]
+}

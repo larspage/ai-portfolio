@@ -1,0 +1,35 @@
+{
+  "id": "multitenant-saas-09",
+  "seq": "09",
+  "title": "Build tenant-aware data access layer with repository pattern",
+  "status": "completed",
+  "depends_on": [
+    "04",
+    "05"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/db/schema.ts",
+    "lib/db/index.ts"
+  ],
+  "acceptance_criteria": [
+    "BaseRepository class created with tenant-scoped CRUD methods (findAll, findById, create, update, delete)",
+    "Every repository query automatically scopes by tenant_id from TenantContext",
+    "Repository methods use Drizzle ORM with RLS — no manual tenant_id injection in queries",
+    "Specific repositories created: TenantRepository, UserRepository, ResumeRepository, AnalysisRepository",
+    "Cross-tenant queries (e.g., admin) use explicit bypass method with elevated privileges",
+    "Repository pattern returns typed entities matching Drizzle schema types"
+  ],
+  "deliverables": [
+    "lib/tenant/repository.ts",
+    "lib/tenant/repositories/tenant-repo.ts",
+    "lib/tenant/repositories/user-repo.ts",
+    "lib/tenant/repositories/resume-repo.ts",
+    "lib/tenant/repositories/analysis-repo.ts"
+  ],
+  "started_at": "2026-05-10T12:11:47.221Z",
+  "completed_at": "2026-05-10T12:13:11.796Z",
+  "completion_summary": "Created TenantRepository base class with findById/findAll/create/update/delete/count (auto-tenant-scoped). Created ResumeRepository, AnalysisRepository, CacheRepository with entity-specific methods. All queries run with app.tenant_id set for RLS enforcement."
+}

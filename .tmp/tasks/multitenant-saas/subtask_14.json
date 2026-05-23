@@ -1,0 +1,27 @@
+{
+  "id": "multitenant-saas-14",
+  "seq": "14",
+  "title": "Build text extraction pipeline for PDF and DOCX uploads",
+  "status": "pending",
+  "depends_on": ["13"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/resume.ts"
+  ],
+  "acceptance_criteria": [
+    "pdf-parse library added for PDF text extraction",
+    "mammoth library added for DOCX text extraction",
+    "extractTextFromFile(fileBuffer, mimeType) returns plain text content",
+    "Extraction runs server-side after upload confirmation",
+    "Extracted text stored in resumes.raw_text column",
+    "Extraction errors caught and stored (resumes.extraction_error), pipeline continues",
+    "Extraction triggers analysis pipeline automatically on success"
+  ],
+  "deliverables": [
+    "lib/extraction/extractor.ts",
+    "lib/extraction/pdf-extractor.ts",
+    "lib/extraction/docx-extractor.ts"
+  ]
+}

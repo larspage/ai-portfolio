@@ -1,0 +1,31 @@
+{
+  "id": "multitenant-saas-01",
+  "seq": "01",
+  "title": "Initialize Docker Compose structure with Dockerfile, .dockerignore, and docker-compose.yml",
+  "status": "completed",
+  "depends_on": [],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "tsconfig.json",
+    "next.config.mjs"
+  ],
+  "reference_files": [
+    "package.json",
+    ".gitignore"
+  ],
+  "acceptance_criteria": [
+    "docker-compose.yml defines services: app, db (postgres:16), nginx",
+    "Dockerfile uses Node 18+ with multi-stage build (deps, build, runner)",
+    ".dockerignore excludes node_modules, .next, .git, .cache",
+    "PostgreSQL 16 service has health check and persistent volume mounted",
+    "Dockerfile compiles Next.js with `npm run build` and runs with `next start`"
+  ],
+  "deliverables": [
+    "Dockerfile",
+    "docker-compose.yml",
+    ".dockerignore"
+  ],
+  "completed_at": "2026-05-10T12:02:04.238Z",
+  "completion_summary": "Created Dockerfile (multi-stage Node 20 Alpine), docker-compose.yml (app/db/nginx services), .dockerignore; updated next.config.mjs with standalone output; updated .gitignore and .env.local.example"
+}

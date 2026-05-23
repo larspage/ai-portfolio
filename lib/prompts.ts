@@ -2,6 +2,39 @@ import fs from 'fs';
 import path from 'path';
 import { buildProjectContextForSection } from './projects';
 
+// ─── Prompt Factory ───────────────────────────────────────────────────────
+// Generates system prompts dynamically from structured parameters.
+// This replaces hardcoded per-section prompts with a single parameter-driven generator.
+
+export interface SectionConfigParams {
+  name: string;
+  focusDescription?: string | null;
+}
+
+export function buildSectionSystemPrompt(params: SectionConfigParams): string {
+  const { name, focusDescription } = params;
+
+  return `You are a professional resume analyst specializing in ${name}.
+Analyze the provided experience and highlight the most impressive accomplishments related to ${name}.
+${focusDescription ? `Focus on: ${focusDescription}` : ''}
+
+IMPORTANT — Voice: Write ALL text in first person. Use "I", "me", "my". Never use "the candidate".
+IMPORTANT — Years: A ROLE DURATIONS reference table is provided. Use those exact numbers when mentioning years of experience. Sum durations across relevant roles for each skill.
+
+Return your response as JSON with the following structure:
+{
+  "summary": "A brief first-person summary focused on ${name}, including relevant years of experience",
+  "highlights": [
+    {
+      "title": "Achievement or project title (include company and duration)",
+      "description": "First-person description of the accomplishment, including specific actions, challenges, and context",
+      "technologies": ["tech1", "tech2"],
+      "impact": "Quantifiable impact or result, including metrics, business outcomes, or improvements"
+    }
+  ]
+}`;
+}
+
 export const SYSTEM_PROMPTS = {
   overview: `You are a professional resume analyst helping to create compelling professional summaries.
 Your task is to analyze the provided resume and generate a concise, impactful overview that highlights
@@ -139,12 +172,15 @@ Return your response as JSON with the following structure:
   experience was found for the searched terms.`,
 };
 
-export function createAnalysisPrompt(section: string, resumeContent: string): string {
+export function createAnalysisPrompt(section: string, resumeContent: string, sectionConfig?: SectionConfigParams): string {
   const skillSummary = computeSkillSummary();
   const roleDurations = parseRoleDurations(resumeContent);
   const companyContext = loadCompanyContext();
   const projectContext = buildProjectContextForSection(section);
-  let prompt = `Please analyze the following resume content and provide your assessment.
+  const focusNote = sectionConfig?.focusDescription
+    ? `\nFOCUS AREA: The user wants you to highlight "${sectionConfig.focusDescription}". Tailor your analysis accordingly.\n`
+    : '';
+  let prompt = `Please analyze the following resume content and provide your assessment.${focusNote}
 
 SKILL SUMMARY (pre-computed — use these exact year totals when mentioning experience with any skill):
 ${skillSummary}

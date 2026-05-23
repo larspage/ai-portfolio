@@ -1,0 +1,30 @@
+{
+  "id": "multitenant-saas-20",
+  "seq": "20",
+  "title": "Create marketing landing page with feature highlights and CTA",
+  "status": "pending",
+  "depends_on": ["08"],
+  "parallel": false,
+  "suggested_agent": "OpenFrontendSpecialist",
+  "context_files": [],
+  "reference_files": [
+    "app/page.tsx",
+    "app/layout.tsx",
+    "app/globals.css"
+  ],
+  "acceptance_criteria": [
+    "Landing page at / with hero section, feature highlights (3-4 key features), and pricing preview",
+    "CTA buttons for 'Get Started' (→ signup) and 'Learn More' (→ scroll to features)",
+    "Responsive design: mobile-first, works on all breakpoints",
+    "SEO-optimized with meta tags, Open Graph, and structured data",
+    "No authentication required to view marketing page",
+    "Signed-in users visiting / get redirected to /dashboard"
+  ],
+  "deliverables": [
+    "app/(marketing)/page.tsx",
+    "app/(marketing)/layout.tsx",
+    "components/marketing/hero.tsx",
+    "components/marketing/features.tsx",
+    "components/marketing/pricing.tsx"
+  ]
+}

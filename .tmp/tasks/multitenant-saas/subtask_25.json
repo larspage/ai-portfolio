@@ -1,0 +1,28 @@
+{
+  "id": "multitenant-saas-25",
+  "seq": "25",
+  "title": "Implement AdSense/EthicalAds placement with max 2 ads per page, lazy-loaded",
+  "status": "pending",
+  "depends_on": ["24"],
+  "parallel": false,
+  "suggested_agent": "OpenFrontendSpecialist",
+  "context_files": [
+    ".opencode/context/ui/web/ui-styling-standards.md"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "EthicalAds integration as primary ad network, Google AdSense as fallback",
+    "Ad component enforces max 2 ads visible per page at any time",
+    "Ads are lazy-loaded via IntersectionObserver (not loaded until near viewport)",
+    "Ad placement respects GDPR consent: ads only shown when marketing consent granted",
+    "Ad slots are clearly labeled as 'Advertisement'",
+    "Ad dimensions responsive to viewport (desktop: 728x90 leaderboard, mobile: 320x100 banner)",
+    "ads.txt file served at /ads.txt root path"
+  ],
+  "deliverables": [
+    "components/ads/ad-slot.tsx",
+    "components/ads/ad-manager.tsx",
+    "public/ads.txt",
+    "lib/ads/ads-config.ts"
+  ]
+}

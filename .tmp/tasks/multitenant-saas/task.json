@@ -1,0 +1,38 @@
+{
+  "id": "multitenant-saas",
+  "name": "Multi-Tenant SaaS Conversion",
+  "status": "active",
+  "objective": "Convert single-user aiPortfolio Next.js site into multi-tenant ad-supported SaaS for jobseekers with tenant isolation, RLS, Auth.js, DO Spaces, and Docker deployment",
+  "context_files": [
+    "tsconfig.json",
+    "next.config.mjs",
+    ".eslintrc.json",
+    "tailwind.config.ts"
+  ],
+  "reference_files": [
+    "app/api/analyze/route.ts",
+    "lib/resume.ts",
+    "lib/cache.ts",
+    "lib/openai.ts",
+    "lib/prompts.ts",
+    "package.json",
+    "scripts/interview.ts",
+    "content/resume-data.json"
+  ],
+  "exit_criteria": [
+    "All 40 subtasks completed and verified",
+    "PostgreSQL 16 running in Docker with Drizzle schema migrated",
+    "Auth.js v5 with database sessions and tenant_id embedded",
+    "RLS FORCE policies active on all tenant-scoped tables",
+    "DO Spaces file upload with presigned URLs operational",
+    "Multi-tenant analysis pipeline with DB-backed cache",
+    "GDPR cookie consent and AdSense placement (max 2 ads/page)",
+    "Docker Compose deployment with blue-green zero-downtime",
+    "GitHub Actions CI/CD pipeline passing",
+    "Security audit passed — 404 vs 403 isolation verified"
+  ],
+  "subtask_count": 40,
+  "completed_count": 9,
+  "created_at": "2026-05-09T00:00:00Z",
+  "completed_at": null
+}

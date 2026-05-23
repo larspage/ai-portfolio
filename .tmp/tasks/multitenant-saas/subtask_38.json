@@ -1,0 +1,30 @@
+{
+  "id": "multitenant-saas-38",
+  "seq": "38",
+  "title": "Performance optimization: bundle, image optimization, DB query tuning",
+  "status": "pending",
+  "depends_on": ["32", "37"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "next.config.mjs",
+    "package.json"
+  ],
+  "acceptance_criteria": [
+    "Next.js bundle analysis run, large dependencies identified and optimized",
+    "Dynamic imports with next/dynamic for heavy components (analysis results, upload dialogs)",
+    "Image optimization: next/image configured with DO Spaces remotePatterns",
+    "Database queries analyzed with EXPLAIN ANALYZE, missing indexes created",
+    "RLS policy performance verified (no seq scans on tenant_id)",
+    "Lighthouse performance score ≥ 90 on desktop and mobile",
+    "API response times under 200ms for cached analyses, under 2s for uncached",
+    "Bundle size report generated and checked into docs/"
+  ],
+  "deliverables": [
+    "next.config.mjs (optimized)",
+    "lib/db/migrations/0003_performance_indexes.sql",
+    "docs/performance/bundle-report.md",
+    "docs/performance/db-tuning.md"
+  ]
+}

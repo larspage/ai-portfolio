@@ -1,0 +1,29 @@
+{
+  "id": "multitenant-saas-15",
+  "seq": "15",
+  "title": "Create analysis_cache DB table and repository with tenant-scoped hashing",
+  "status": "pending",
+  "depends_on": ["09"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/db/schema.ts",
+    "lib/cache.ts",
+    "lib/tenant/repository.ts"
+  ],
+  "acceptance_criteria": [
+    "analysis_cache table added to Drizzle schema with columns: id, tenant_id, resume_hash, section, response_json, created_at, expires_at",
+    "Unique constraint on (tenant_id, resume_hash, section)",
+    "AnalysisCacheRepository extends BaseRepository with cache-specific methods",
+    "getCachedAnalysis(resumeHash, section) returns cached result or null",
+    "setCachedAnalysis(resumeHash, section, response) upserts cache entry",
+    "Cache entries are automatically scoped by tenant_id via RLS",
+    "Resume hash computed from raw_text content (SHA-256)"
+  ],
+  "deliverables": [
+    "lib/db/migrations/0002_analysis_cache.sql",
+    "lib/tenant/repositories/cache-repo.ts",
+    "lib/analysis/cache.ts"
+  ]
+}

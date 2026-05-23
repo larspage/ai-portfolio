@@ -1,0 +1,27 @@
+{
+  "id": "multitenant-saas-37",
+  "seq": "37",
+  "title": "Write end-to-end tests for auth flow, tenant onboarding, and isolation",
+  "status": "pending",
+  "depends_on": ["36"],
+  "parallel": false,
+  "suggested_agent": "TestEngineer",
+  "context_files": [],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "Cypress or Playwright configured for E2E testing",
+    "E2E test: user signup → tenant onboarding → dashboard loads with correct tenant context",
+    "E2E test: user login → upload resume → see analysis results on dashboard",
+    "E2E test: Tenant A cannot access Tenant B's resumes via URL manipulation",
+    "E2E test: password reset flow from email link to new password",
+    "E2E test: GDPR consent banner interaction (accept, reject, customize)",
+    "Tests run in headless mode as part of CI pipeline"
+  ],
+  "deliverables": [
+    "e2e/auth-flow.spec.ts",
+    "e2e/tenant-onboarding.spec.ts",
+    "e2e/upload-analysis.spec.ts",
+    "e2e/tenant-isolation.spec.ts",
+    "e2e/gdpr-consent.spec.ts"
+  ]
+}

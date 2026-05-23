@@ -1,0 +1,28 @@
+{
+  "id": "multitenant-saas-30",
+  "seq": "30",
+  "title": "Implement account settings page with profile, plan, and billing",
+  "status": "pending",
+  "depends_on": ["11", "26"],
+  "parallel": true,
+  "suggested_agent": "OpenFrontendSpecialist",
+  "context_files": [
+    ".opencode/context/ui/web/ui-styling-standards.md"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "Settings page at /dashboard/settings with tabs: Profile, Plan, Billing",
+    "Profile tab: edit name, email, password change form",
+    "Plan tab: show current plan, upgrade/downgrade options, feature comparison table",
+    "Billing tab: payment method (Stripe), invoice history, cancel subscription",
+    "All forms validated client-side before submission",
+    "Changes saved with success toast on confirmation",
+    "Delete account button with confirmation flow and data deletion notice"
+  ],
+  "deliverables": [
+    "app/(dashboard)/settings/page.tsx",
+    "components/settings/profile-form.tsx",
+    "components/settings/plan-info.tsx",
+    "components/settings/billing-info.tsx"
+  ]
+}

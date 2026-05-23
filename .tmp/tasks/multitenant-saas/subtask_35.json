@@ -1,0 +1,29 @@
+{
+  "id": "multitenant-saas-35",
+  "seq": "35",
+  "title": "Perform security audit focused on tenant isolation verification",
+  "status": "pending",
+  "depends_on": ["19", "34"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/tenant/context.ts",
+    "lib/tenant/repository.ts",
+    "lib/tenant/access-control.ts",
+    "lib/db/rls.ts"
+  ],
+  "acceptance_criteria": [
+    "Audit checklist created covering: RLS policies, tenant_id scoping, session tenant_id injection, 404 vs 403",
+    "Every API route reviewed for tenant_id scope: create, read, update, delete operations all scoped",
+    "Direct DB queries (non-repository) checked for missing tenant_id filters",
+    "AsyncLocalStorage tenant context verified for all async paths (no context leaks)",
+    "RLS FORCE policies tested with direct SQL to verify cross-tenant filtering",
+    "Session integrity verified: tenant_id in session cannot be tampered with client-side",
+    "Audit findings documented with severity and remediation steps"
+  ],
+  "deliverables": [
+    "docs/security/tenant-isolation-audit.md",
+    "docs/security/audit-checklist.md"
+  ]
+}

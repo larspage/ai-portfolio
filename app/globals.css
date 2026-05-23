@@ -63,6 +63,34 @@ body {
   .nav-link-active {
     @apply text-umber-900 border-b-2 border-umber-900;
   }
+
+  .resume-content h2 {
+    @apply text-2xl font-bold text-umber-800 mt-8 mb-4 pb-2 border-b border-umber-200;
+  }
+
+  .resume-content h3 {
+    @apply text-lg font-semibold text-navy-800 mt-6 mb-2;
+  }
+
+  .resume-content p {
+    @apply text-slate-700 leading-relaxed mb-4;
+  }
+
+  .resume-content ul {
+    @apply list-disc list-outside ml-5 mb-4 space-y-2;
+  }
+
+  .resume-content li {
+    @apply text-slate-700 leading-relaxed pl-1;
+  }
+
+  .resume-content strong {
+    @apply font-semibold text-slate-900;
+  }
+
+  .resume-content hr {
+    @apply border-slate-200 my-6;
+  }
 }
 
 @layer utilities {

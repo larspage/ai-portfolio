@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  DROPLET_DIR: /var/www/aiportfolio
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,50 +16,114 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Build Docker image
+        run: docker compose build app
+
+      - name: Save image
+        run: docker save aiportfolio-app:latest | gzip > app-image.tar.gz
+
+      - name: Create .env from secrets
+        run: |
+          cat > .env << EOF
+DATABASE_URL=postgres://aiportfolio:aiportfolio@db:5432/aiportfolio
+AUTH_SECRET=${{ secrets.AUTH_SECRET }}
+AUTH_GOOGLE_ID=${{ secrets.AUTH_GOOGLE_ID }}
+AUTH_GOOGLE_SECRET=${{ secrets.AUTH_GOOGLE_SECRET }}
+DO_SPACES_ENDPOINT=${{ secrets.DO_SPACES_ENDPOINT }}
+DO_SPACES_REGION=${{ secrets.DO_SPACES_REGION }}
+DO_SPACES_BUCKET=${{ secrets.DO_SPACES_BUCKET }}
+DO_SPACES_KEY=${{ secrets.DO_SPACES_KEY }}
+DO_SPACES_SECRET=${{ secrets.DO_SPACES_SECRET }}
+OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+DOMAIN=${{ secrets.DOMAIN }}
+EOF
+
+      - name: Copy files to droplet
+        uses: appleboy/scp-action@v0.1.7
         with:
-          node-version: '20'
-          cache: 'npm'
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
+          source: |
+            app-image.tar.gz
+            docker-compose.yml
+            Dockerfile
+            .env
+            nginx/
+            scripts/
+            lib/db/migrations/
+            drizzle.config.ts
+          target: ${{ env.DROPLET_DIR }}
+          strip_components: 0
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Update server code and runtime deps
+      - name: Deploy on droplet
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_USER }}
           key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
           script: |
-            cd /var/www/aiportfolio
-            git fetch origin main
-            git reset --hard origin/main
-            npm install --omit=dev
+            cd ${{ env.DROPLET_DIR }}
 
-      - name: Setup SSH for rsync
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.DO_SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H ${{ secrets.DO_HOST }} >> ~/.ssh/known_hosts
+            # Load the new Docker image
+            gunzip -c app-image.tar.gz | docker load || true
+            rm -f app-image.tar.gz
 
-      - name: Sync build artifact to server
-        run: |
-          rsync -az --delete \
-            -e "ssh -i ~/.ssh/deploy_key" \
-            .next/ \
-            ${{ secrets.DO_USER }}@${{ secrets.DO_HOST }}:/var/www/aiportfolio/.next/
+            # Blue-green deployment
+            echo "=== Checking current upstream ==="
+            CURRENT_UPSTREAM=$(docker compose exec -T nginx cat /etc/nginx/conf.d/upstream.conf 2>/dev/null || echo "green")
 
-      - name: Restart app
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.DO_HOST }}
-          username: ${{ secrets.DO_USER }}
-          key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
-          script: |
-            pm2 restart aiportfolio
-            pm2 save
+            if echo "$CURRENT_UPSTREAM" | grep -q "app-blue"; then
+              NEW_UPSTREAM="green"
+              APP_CONTAINER="app-green"
+              NGINX_CONF="nginx-green"
+            else
+              NEW_UPSTREAM="blue"
+              APP_CONTAINER="app-blue"
+              NGINX_CONF="nginx-blue"
+            fi
+
+            echo "=== Deploying to $NEW_UPSTREAM ==="
+
+            # Start new instance — entrypoint auto-runs: migrations → RLS → seed → app
+            docker compose up -d --no-deps $APP_CONTAINER
+
+            # Wait for health check (entrypoint handles DB setup first, so this may take a bit)
+            echo "=== Waiting for health check (max 120s) ==="
+            HEALTHY=false
+            for i in $(seq 1 60); do
+              STATUS=$(docker compose exec -T $APP_CONTAINER \
+                wget --no-verbose --tries=1 --spider http://localhost:3000/api/health 2>&1 || true)
+              if echo "$STATUS" | grep -q "200 OK"; then
+                HEALTHY=true
+                echo "  Health check passed after ${i}s"
+                break
+              fi
+              sleep 2
+            done
+
+            if [ "$HEALTHY" = false ]; then
+              echo "ERROR: Health check failed — rolling back"
+              docker compose logs --tail=30 $APP_CONTAINER
+              docker compose stop $APP_CONTAINER
+              exit 1
+            fi
+
+            # Switch nginx to new upstream
+            cp nginx/$NGINX_CONF.conf nginx/conf.d/upstream.conf
+            docker compose exec nginx nginx -s reload
+            echo "=== Nginx switched to $NEW_UPSTREAM ==="
+
+            # Stop old instance
+            OLD_UPSTREAM=$([ "$NEW_UPSTREAM" = "blue" ] && echo "green" || echo "blue")
+            docker compose stop "app-$OLD_UPSTREAM" 2>/dev/null || true
+            docker compose rm -f "app-$OLD_UPSTREAM" 2>/dev/null || true
+
+            # Cleanup
+            docker image prune -f || true
+
+            echo "=== Deploy complete — $NEW_UPSTREAM active ==="
+
+      - name: Clean up runner
+        if: always()
+        run: rm -f app-image.tar.gz .env

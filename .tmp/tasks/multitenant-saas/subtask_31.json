@@ -1,0 +1,28 @@
+{
+  "id": "multitenant-saas-31",
+  "seq": "31",
+  "title": "Add toast/notification system for async operations",
+  "status": "pending",
+  "depends_on": ["26"],
+  "parallel": true,
+  "suggested_agent": "OpenFrontendSpecialist",
+  "context_files": [
+    ".opencode/context/ui/web/ui-styling-standards.md"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "Toast notification component supporting success, error, warning, info variants",
+    "Toasts auto-dismiss after configurable duration (default 5s)",
+    "Manually dismissible via close button",
+    "Stacked: multiple toasts shown simultaneously without overlapping",
+    "Context provider wrapper for global toast access (addToast, removeToast)",
+    "Animated: slide-in from top-right, fade-out on dismiss",
+    "Accessible: role='alert' and aria-live='polite' for screen readers"
+  ],
+  "deliverables": [
+    "components/ui/toast.tsx",
+    "components/ui/toast-container.tsx",
+    "lib/hooks/use-toast.ts",
+    "contexts/toast-context.tsx"
+  ]
+}

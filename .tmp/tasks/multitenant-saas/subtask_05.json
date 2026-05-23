@@ -1,0 +1,30 @@
+{
+  "id": "multitenant-saas-05",
+  "seq": "05",
+  "title": "Implement RLS policies with FORCE on all tenant-scoped tables",
+  "status": "completed",
+  "depends_on": [
+    "04"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/db/schema.ts"
+  ],
+  "acceptance_criteria": [
+    "RLS enabled on all tenant-scoped tables: users, sessions, accounts, resumes, analyses, analysis_cache, ad_clicks",
+    "FORCE RLS policy applied: every row access checks current_setting('app.tenant_id')",
+    "Migration creates enable_rls SQL, policies, and app.tenant_id setting function",
+    "app.tenant_id is set on every database connection checkout in drizzle config",
+    "RLS policies do NOT apply to tenants table itself (it is cross-tenant)",
+    "Cross-tenant SELECT returns 0 rows (not error) due to RLS filtering"
+  ],
+  "deliverables": [
+    "lib/db/migrations/0001_rls_policies.sql",
+    "lib/db/rls.ts"
+  ],
+  "started_at": "2026-05-10T12:08:04.251Z",
+  "completed_at": "2026-05-10T12:09:18.160Z",
+  "completion_summary": "Created RLS migration (0001_rls_policies.sql) with FORCE policies on 8 tables (users, sessions, accounts, authenticators, resumes, analyses, analysis_cache, ad_clicks). Created helper functions set_tenant_context/clear_tenant_context/get_tenant_context. Updated lib/db/index.ts with getTenantDb(), getPooledTenantDb(), setTenantContext(), clearTenantContext()."
+}

@@ -1,0 +1,30 @@
+{
+  "id": "multitenant-saas-16",
+  "seq": "16",
+  "title": "Refactor existing analysis pipeline to be tenant-scoped with DB cache backend",
+  "status": "pending",
+  "depends_on": ["15", "14"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/openai.ts",
+    "lib/prompts.ts",
+    "lib/resume.ts",
+    "lib/cache.ts",
+    "lib/tenant/repositories/cache-repo.ts"
+  ],
+  "acceptance_criteria": [
+    "New AnalysisService class orchestrates extraction → caching → OpenAI → store",
+    "analysis_cache table replaces filesystem .cache/ completely",
+    "Old lib/cache.ts deprecated — no code references remain",
+    "AnalysisService receives tenant context implicitly via TenantContext/RLS",
+    "Cache key includes tenant_id + resume_hash + section (no cross-tenant cache leaks)",
+    "OpenAI client remains stateless but analysis results stored per-tenant",
+    "Service writes to analyses table with tenant_id, resume_id, section, response_json"
+  ],
+  "deliverables": [
+    "lib/analysis/service.ts",
+    "lib/analysis/pipeline.ts"
+  ]
+}

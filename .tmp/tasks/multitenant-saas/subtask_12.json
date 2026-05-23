@@ -1,0 +1,28 @@
+{
+  "id": "multitenant-saas-12",
+  "seq": "12",
+  "title": "Build resume CRUD API routes with tenant scoping",
+  "status": "pending",
+  "depends_on": ["09"],
+  "parallel": true,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/tenant/repositories/resume-repo.ts",
+    "lib/db/schema.ts"
+  ],
+  "acceptance_criteria": [
+    "GET /api/tenant/resumes — list all resumes for current tenant (paginated)",
+    "GET /api/tenant/resumes/[id] — get single resume with RLS scoping",
+    "POST /api/tenant/resumes — create resume record with tenant_id from context",
+    "PUT /api/tenant/resumes/[id] — update resume metadata",
+    "DELETE /api/tenant/resumes/[id] — soft-delete resume",
+    "All routes return 404 (not 403) for cross-tenant access attempts",
+    "All routes require authentication; unauthenticated requests return 401"
+  ],
+  "deliverables": [
+    "app/api/tenant/resumes/route.ts",
+    "app/api/tenant/resumes/[id]/route.ts",
+    "lib/api/resume-service.ts"
+  ]
+}

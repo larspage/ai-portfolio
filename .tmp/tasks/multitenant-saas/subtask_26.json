@@ -1,0 +1,32 @@
+{
+  "id": "multitenant-saas-26",
+  "seq": "26",
+  "title": "Create dashboard layout with tenant-aware navigation",
+  "status": "pending",
+  "depends_on": ["03", "08"],
+  "parallel": false,
+  "suggested_agent": "OpenFrontendSpecialist",
+  "context_files": [
+    ".opencode/context/ui/web/ui-styling-standards.md",
+    ".opencode/context/core/workflows/design-iteration-stage-layout.md"
+  ],
+  "reference_files": [
+    "app/layout.tsx"
+  ],
+  "acceptance_criteria": [
+    "Dashboard layout at /dashboard with sidebar navigation and top header bar",
+    "Sidebar includes: Resume Analysis, Upload Resume, History, Settings links",
+    "Header shows tenant name, user avatar/dropdown (profile, settings, logout)",
+    "Layout is responsive: sidebar collapses to hamburger on mobile",
+    "Active route highlighted in sidebar navigation",
+    "Breadcrumb navigation for deep pages",
+    "Follows 4-stage design workflow, responsive at all breakpoints"
+  ],
+  "deliverables": [
+    "app/(dashboard)/layout.tsx",
+    "app/(dashboard)/page.tsx",
+    "components/dashboard/sidebar.tsx",
+    "components/dashboard/header.tsx",
+    "components/dashboard/dashboard-shell.tsx"
+  ]
+}

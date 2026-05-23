@@ -1,0 +1,30 @@
+{
+  "id": "multitenant-saas-04",
+  "seq": "04",
+  "title": "Create tenant context system with AsyncLocalStorage and request middleware",
+  "status": "completed",
+  "depends_on": [
+    "02"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "tsconfig.json"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "AsyncLocalStorage-based TenantContext class created in lib/tenant/context.ts",
+    "Middleware in app/middleware.ts resolves tenant from subdomain or path prefix",
+    "Middleware sets tenant context via TenantContext.run() for every request",
+    "getTenantId() utility returns current tenant_id or throws if unauthenticated/unresolved",
+    "Tenant resolution supports both subdomain (tenant.yourapp.com) and path-based (/tenant/slug/) strategies",
+    "Middleware respects public routes (/, /auth/*, /api/auth/*) without tenant requirement"
+  ],
+  "deliverables": [
+    "lib/tenant/context.ts",
+    "lib/tenant/resolver.ts",
+    "app/middleware.ts"
+  ],
+  "completed_at": "2026-05-10T12:08:04.250Z",
+  "completion_summary": "Created lib/tenant/context.ts (AsyncLocalStorage TenantContext with run/get/getTenantId/requireTenantId/update). Created app/middleware.ts (resolves tenant from subdomain or path prefix via x-tenant-slug header). Created lib/tenant/resolve.ts (withTenant wrapper for API routes, slug-to-UUID resolution with cache)."
+}

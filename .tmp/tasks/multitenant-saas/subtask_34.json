@@ -1,0 +1,27 @@
+{
+  "id": "multitenant-saas-34",
+  "seq": "34",
+  "title": "Apply rate limiting across all API routes and add global middleware",
+  "status": "pending",
+  "depends_on": ["18", "33"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "lib/middleware/rate-limit.ts"
+  ],
+  "acceptance_criteria": [
+    "Rate limiting middleware applied globally via Next.js middleware or per-route wrapper",
+    "Rate limit tiers: authenticated users (higher limits), anonymous (lower limits), API keys (custom)",
+    "Rate limit storage: in-memory sliding window for MVP, Redis-ready interface for production",
+    "All /api/* routes have rate limiting configured",
+    "Rate limit headers (X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset) on every response",
+    "429 responses include Retry-After header and descriptive error body",
+    "Rate limit config DRY — single source of truth for limits"
+  ],
+  "deliverables": [
+    "lib/middleware/rate-limit.ts (updated)",
+    "lib/middleware/with-rate-limit.ts",
+    "lib/config/rate-limits.ts"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "multitenant-saas-32",
+  "seq": "32",
+  "title": "Create mobile-responsive design pass across all dashboard and marketing pages",
+  "status": "pending",
+  "depends_on": ["28", "30", "25"],
+  "parallel": false,
+  "suggested_agent": "OpenFrontendSpecialist",
+  "context_files": [
+    ".opencode/context/ui/web/ui-styling-standards.md",
+    ".opencode/context/core/workflows/design-iteration-stage-theme.md"
+  ],
+  "reference_files": [
+    "app/globals.css",
+    "tailwind.config.ts"
+  ],
+  "acceptance_criteria": [
+    "All marketing pages fully responsive: hero, features, pricing sections adapt to mobile",
+    "Dashboard sidebar collapses to bottom nav or hamburger menu on screens < 768px",
+    "Analysis results page sections stack vertically on mobile instead of tabs",
+    "Upload dropzone is touch-friendly with larger tap targets on mobile",
+    "Tables switch to card layout on mobile (horizontal scroll as fallback)",
+    "Forms have appropriate input sizing and spacing for touch devices",
+    "Ad slots resize correctly on mobile viewport (320px-768px)"
+  ],
+  "deliverables": [
+    "app/globals.css (updated responsive styles)",
+    "tailwind.config.ts (updated breakpoints)",
+    "components/shared/responsive-container.tsx"
+  ]
+}

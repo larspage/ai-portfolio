@@ -1,0 +1,25 @@
+{
+  "id": "multitenant-saas-17",
+  "seq": "17",
+  "title": "Update /api/analyze endpoint to accept tenant context and resume_id",
+  "status": "pending",
+  "depends_on": ["16", "12"],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [],
+  "reference_files": [
+    "app/api/analyze/route.ts",
+    "lib/analysis/service.ts"
+  ],
+  "acceptance_criteria": [
+    "POST /api/tenant/analyze accepts { resume_id, section } instead of old single-user params",
+    "Endpoint looks up resume by resume_id scoped to current tenant (404 if not found)",
+    "Old /api/analyze endpoint deprecated or removed",
+    "Analysis results stored to analyses table on completion",
+    "Response returns analysis result with cache hit/miss indicator",
+    "Error responses include appropriate HTTP status codes (400, 404, 429, 500)"
+  ],
+  "deliverables": [
+    "app/api/tenant/analyze/route.ts"
+  ]
+}

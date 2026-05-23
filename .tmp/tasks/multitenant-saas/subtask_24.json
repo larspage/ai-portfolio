@@ -1,0 +1,27 @@
+{
+  "id": "multitenant-saas-24",
+  "seq": "24",
+  "title": "Add GDPR cookie consent banner with granular controls",
+  "status": "pending",
+  "depends_on": ["08"],
+  "parallel": true,
+  "suggested_agent": "OpenFrontendSpecialist",
+  "context_files": [
+    ".opencode/context/ui/web/ui-styling-standards.md"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "Cookie consent banner appears on first visit with 'Accept All', 'Reject All', and 'Customize' options",
+    "Customize panel allows granular toggles: Necessary, Analytics, Marketing (ads)",
+    "Consent preference stored in localStorage and sent to server for logging in ad_clicks table",
+    "GDPR-compliant: no non-necessary cookies set before consent",
+    "Banner respects Do Not Track (DNT) browser setting",
+    "Consent banner is accessible (keyboard navigable, screen-reader friendly)",
+    "Mobile-responsive banner with smooth slide-up animation"
+  ],
+  "deliverables": [
+    "components/gdpr/cookie-banner.tsx",
+    "components/gdpr/consent-manager.tsx",
+    "lib/gdpr/consent.ts"
+  ]
+}
